@@ -1,0 +1,133 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "61ffbdd4affe74a49c77",
+  "position": {
+    "x": 502.85714285714289,
+    "y": 588.57142857142856,
+    "z": 11000,
+    "height": 397.14285714285717,
+    "width": 611.42857142857144,
+    "tabOrder": 11000
+  },
+  "visual": {
+    "visualType": "columnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Category"
+                    }
+                  },
+                  "Property": "Code"
+                }
+              },
+              "queryRef": "Dim_Category.Code",
+              "nativeQueryRef": "Code",
+              "active": true
+            }
+          ]
+        },
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_ItemLedgerEntry"
+                    }
+                  },
+                  "Property": "Invoiced Quantity (bins)"
+                }
+              },
+              "queryRef": "Fact_ItemLedgerEntry.Invoiced Quantity (bins)",
+              "nativeQueryRef": "Invoiced Quantity (bins)"
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "GroupRef": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Category"
+                    }
+                  },
+                  "Property": "Code (groups)",
+                  "GroupedColumns": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Dim_Category"
+                          }
+                        },
+                        "Property": "Code"
+                      }
+                    }
+                  ]
+                }
+              },
+              "queryRef": "Dim_Category.Code (groups)",
+              "nativeQueryRef": "Code (groups)"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_ValueEntry"
+                        }
+                      },
+                      "Property": "Sales Amount (Actual)"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Fact_ValueEntry.Sales Amount (Actual))",
+              "nativeQueryRef": "Sum of Sales Amount (Actual)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Fact_ValueEntry"
+                      }
+                    },
+                    "Property": "Sales Amount (Actual)"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

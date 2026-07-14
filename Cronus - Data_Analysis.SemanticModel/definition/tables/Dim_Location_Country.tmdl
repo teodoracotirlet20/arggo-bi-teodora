@@ -1,0 +1,55 @@
+table Dim_Location_Country
+	lineageTag: 6d4379ea-7dfe-402a-8e7a-0aaeadc61890
+
+	column CountryID
+		formatString: 0
+		lineageTag: cec66f5b-76fd-4559-b6ad-9f6f64e5acc4
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [CountryID]
+
+		annotation SummarizationSetBy = Automatic
+
+	column CountryCode
+		lineageTag: 99cb34bc-4acc-4a52-93e0-392504fb3665
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [CountryCode]
+
+		annotation SummarizationSetBy = Automatic
+
+	column CountryName
+		lineageTag: 16036306-1ceb-4109-bc19-1147e41cf663
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [CountryName]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Location_Country = calculated
+		mode: import
+		source =
+				
+				DATATABLE(
+				    "CountryID", INTEGER,
+				    "CountryCode", STRING,
+				    "CountryName", STRING,
+				    {
+				        {1, "AT", "Austria"},
+				        {2, "BE", "Belgia"},
+				        {3, "CZ", "Cehia"},
+				        {4, "DE", "Germania"},
+				        {5, "DK", "Danemarca"},
+				        {6, "FR", "Franța"},
+				        {7, "GB", "Marea Britanie"},
+				        {8, "IS", "Islanda"},
+				        {9, "NL", "Țările de Jos"},
+				        {10, "NO", "Norvegia"},
+				        {11, "SE", "Suedia"},
+				        {12, "SI", "Slovenia"},
+				        {13, "US", "Statele Unite"}
+				    }
+				)
+
+	annotation PBI_Id = e680f41b733b455cbdf9548ea73888ed
+

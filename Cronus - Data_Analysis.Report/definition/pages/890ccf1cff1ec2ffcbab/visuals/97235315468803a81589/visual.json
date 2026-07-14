@@ -1,0 +1,74 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "97235315468803a81589",
+  "position": {
+    "x": 959.74025974025972,
+    "y": 59.740259740259738,
+    "z": 11000,
+    "height": 470.12987012987014,
+    "width": 718.18181818181813,
+    "tabOrder": 11000
+  },
+  "visual": {
+    "visualType": "pythonVisual",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_ValueEntry"
+                    }
+                  },
+                  "Property": "Sales Amount (Actual)"
+                }
+              },
+              "queryRef": "Fact_ValueEntry.Sales Amount (Actual)",
+              "nativeQueryRef": "Sales Amount (Actual)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Category"
+                    }
+                  },
+                  "Property": "Code"
+                }
+              },
+              "queryRef": "Dim_Category.Code",
+              "nativeQueryRef": "Code"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "script": [
+        {
+          "properties": {
+            "source": {
+              "expr": {
+                "Literal": {
+                  "Value": "'# The following code to create a dataframe and remove duplicated rows is always executed and acts as a preamble for your script: \n\n# dataset = pandas.DataFrame(Sales Amount (Actual), Code)\n# dataset = dataset.drop_duplicates()\n\n# Paste or type your script code here:\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport matplotlib.ticker as ticker\n\n# 1. Curățăm datele de valori lipsă\ndataset = dataset.dropna(subset=[''Code'', ''Sales Amount (Actual)''])\n\n# 2. Configurăm pânza graficului\nfig, ax = plt.subplots(figsize=(12, 6), facecolor=''white'')\n\n# 3. Desenăm Violin Plot-ul\n# inner=''quartile'' va desena linii punctate în interiorul viorii pentru Q1, Mediană și Q3\nsns.violinplot(\n    data=dataset, \n    x=''Code'', \n    y=''Sales Amount (Actual)'', \n    palette=''Set2'',         # O paletă de culori elegantă și diferențiată\n    inner=''quartile'',       # Arată structura internă a datelor\n    bw_method=0.4,          # Ajustează sensibilitatea curbei (mai fină sau mai detaliată)\n    ax=ax\n)\n\n# 4. Personalizăm titlurile și etichetele\nax.set_title(''Distribuția și Densitatea Vânzărilor per Categorie (Violin Plot)'', fontsize=16, fontweight=''bold'', pad=20, loc=''left'')\nax.set_xlabel(''Categorie Produs (Code)'', fontsize=12, labelpad=10, fontweight=''semibold'')\nax.set_ylabel(''Valoare Vânzare Brută (Sales Amount)'', fontsize=12, labelpad=10, fontweight=''semibold'')\n\n# Formatăm axa Y pentru lizibilitate (punem virgulă la mii)\nax.yaxis.set_major_formatter(ticker.FuncFormatter(lambda x, p: format(int(x), '','')))\n\n# 5. Finisaje de design (aspect curat, fără chenare inutile)\nax.spines[''top''].set_visible(False)\nax.spines[''right''].set_visible(False)\nax.spines[''left''].set_color(''#E0E0E0'')\nax.spines[''bottom''].set_color(''#E0E0E0'')\n\n# Grid discret pe fundal\nax.grid(axis=''y'', linestyle=''--'', alpha=0.3, color=''#666666'')\n\n# Rotim etichetele categoriilor dacă e nevoie\nplt.xticks(rotation=45, ha=''right'')\n\nplt.tight_layout()\n\n# 6. Rulam vizualul\nplt.show()'"
+                }
+              }
+            },
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Python'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

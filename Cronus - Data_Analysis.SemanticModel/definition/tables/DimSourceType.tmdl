@@ -1,0 +1,39 @@
+table DimSourceType
+	lineageTag: edd46f29-90b7-4c07-803e-a6df88a0e1e3
+
+	column SourceTypeID
+		formatString: 0
+		lineageTag: 843dc8fa-22da-4cbc-a4b9-ef7f2ad3b23a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [SourceTypeID]
+
+		annotation SummarizationSetBy = Automatic
+
+	column SourceTypeLabel
+		lineageTag: 23b58642-05cc-4ed6-834a-4022e61d2407
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [SourceTypeLabel]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimSourceType = calculated
+		mode: import
+		source = ```
+				
+				DATATABLE(
+				    "SourceTypeID", INTEGER,
+				    "SourceTypeLabel", STRING,
+				    {
+				        {0, "Blank"},
+				        {1, "Customer"},
+				        {2, "Vendor"},
+				        {3, "Item"}
+				        
+				    }
+				)
+				```
+
+	annotation PBI_Id = b48ba01a48f14e51a192d5e723969992
+

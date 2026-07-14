@@ -1,0 +1,116 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "46e5e323070af29e82e8",
+  "position": {
+    "x": 928.57142857142856,
+    "y": 180.51948051948051,
+    "z": 11000,
+    "height": 581.81818181818176,
+    "width": 771.42857142857144,
+    "tabOrder": 11000
+  },
+  "visual": {
+    "visualType": "pythonVisual",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_ValueEntry"
+                    }
+                  },
+                  "Property": "Sales Amount (Actual)"
+                }
+              },
+              "queryRef": "Fact_ValueEntry.Sales Amount (Actual)",
+              "nativeQueryRef": "Sales Amount (Actual)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_ValueEntry"
+                    }
+                  },
+                  "Property": "Cost Amount (Actual)"
+                }
+              },
+              "queryRef": "Fact_ValueEntry.Cost Amount (Actual)",
+              "nativeQueryRef": "Cost Amount (Actual)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_ValueEntry"
+                    }
+                  },
+                  "Property": "Discount Amount"
+                }
+              },
+              "queryRef": "Fact_ValueEntry.Discount Amount",
+              "nativeQueryRef": "Discount Amount"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_ValueEntry"
+                    }
+                  },
+                  "Property": "Invoiced Quantity"
+                }
+              },
+              "queryRef": "Fact_ValueEntry.Invoiced Quantity",
+              "nativeQueryRef": "Invoiced Quantity"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Category"
+                    }
+                  },
+                  "Property": "Code"
+                }
+              },
+              "queryRef": "Dim_Category.Code",
+              "nativeQueryRef": "Code"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "script": [
+        {
+          "properties": {
+            "source": {
+              "expr": {
+                "Literal": {
+                  "Value": "'# The following code to create a dataframe and remove duplicated rows is always executed and acts as a preamble for your script: \n\n# dataset = pandas.DataFrame(Sales Amount (Actual), Cost Amount (Actual), Discount Amount, Invoiced Quantity, Code)\n# dataset = dataset.drop_duplicates()\n\n# Paste or type your script code here:\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\n# 1. Curățăm datele de valori lipsă\ncolumns_to_use = [''Code'', ''Sales Amount (Actual)'', ''Cost Amount (Actual)'', ''Discount Amount'', ''Invoiced Quantity'']\ndf = dataset[columns_to_use].dropna()\n\n# 2. Grupăm datele pe Categorii pentru a avea o analiză macro, corectă\naggregated_data = df.groupby(''Code'').sum().reset_index()\n\n# 3. Calculăm matricea de corelație (excluzând coloana text ''Code'')\ncorr_matrix = aggregated_data[[''Sales Amount (Actual)'', ''Cost Amount (Actual)'', ''Discount Amount'', ''Invoiced Quantity'']].corr()\n\n# 4. Redenumim axele în grafic pentru a arăta profesional în română\nnume_RO = {\n    ''Sales Amount (Actual)'': ''Valoare Vânzări'',\n    ''Cost Amount (Actual)'': ''Cost Marfă (COGS)'',\n    ''Discount Amount'': ''Total Discount'',\n    ''Invoiced Quantity'': ''Cantitate Vândută''\n}\ncorr_matrix = corr_matrix.rename(index=nume_RO, columns=nume_RO)\n\n# 5. Configurăm pânza graficului\nfig, ax = plt.subplots(figsize=(8, 6), facecolor=''white'')\n\n# 6. Desenăm Heatmap-ul cu Seaborn\nsns.heatmap(\n    corr_matrix, \n    annot=True,          # Pune valorile numerice (coeficienții de corelație) în căsuțe\n    fmt=\".2f\",           # Afișează cu 2 zecimale\n    cmap=\"coolwarm\",     # Paletă de culori: Roșu (corelație pozitivă), Albastru (negativă)\n    vmin=-1, vmax=1,     # Limitele standard ale coeficientului de corelație\n    linewidths=1,        # Linii fine de demarcație între celule\n    square=True,         # Forțează celulele să fie pătrate perfecte\n    cbar_kws={\"shrink\": .8} # Ajustează dimensiunea legendei de culori\n)\n\n# 7. Personalizăm titlul și aranjarea etichetelor\nplt.title(''Matrice de Corelație: Indicatori Operaționali / Categorie'', fontsize=14, fontweight=''bold'', pad=20)\nplt.xticks(rotation=15, ha=''right'', fontsize=10)\nplt.yticks(rotation=0, fontsize=10)\n\nplt.tight_layout()\n\n# 8. Afișăm matricea\nplt.show()'"
+                }
+              }
+            },
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Python'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

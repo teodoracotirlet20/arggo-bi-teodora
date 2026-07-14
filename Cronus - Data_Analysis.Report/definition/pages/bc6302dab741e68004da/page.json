@@ -1,0 +1,31 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "bc6302dab741e68004da",
+  "displayName": "Narrative",
+  "displayOption": "FitToPage",
+  "height": 1000,
+  "width": 1700,
+  "pageBinding": {
+    "name": "8ab25dc5e2139f0cee0b",
+    "type": "Default",
+    "parameters": []
+  },
+  "objects": {
+    "filterCard": [
+      {
+        "properties": {
+          "textSize": {
+            "expr": {
+              "Literal": {
+                "Value": "8L"
+              }
+            }
+          }
+        },
+        "selector": {
+          "id": "Available"
+        }
+      }
+    ]
+  }
+}

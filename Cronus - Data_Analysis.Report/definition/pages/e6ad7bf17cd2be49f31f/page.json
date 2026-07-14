@@ -1,0 +1,32 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "e6ad7bf17cd2be49f31f",
+  "displayName": "Types of Charts",
+  "displayOption": "FitToPage",
+  "height": 1000,
+  "width": 1700,
+  "pageBinding": {
+    "name": "6b9408766f1fea40d907",
+    "type": "Default",
+    "parameters": []
+  },
+  "objects": {
+    "filterCard": [
+      {
+        "properties": {
+          "textSize": {
+            "expr": {
+              "Literal": {
+                "Value": "8L"
+              }
+            }
+          }
+        },
+        "selector": {
+          "id": "Available"
+        }
+      }
+    ]
+  },
+  "type": "Tooltip"
+}

@@ -1,0 +1,151 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "6ee2550252b873ec8c9d",
+  "position": {
+    "x": 215.17412935323381,
+    "y": 240.04975124378109,
+    "z": 17000,
+    "height": 686.56716417910445,
+    "width": 774.87562189054722,
+    "tabOrder": 16000
+  },
+  "visual": {
+    "visualType": "keyDriversVisual",
+    "query": {
+      "queryState": {
+        "ExplainBy": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_ItemLedgerEntry"
+                        }
+                      },
+                      "Property": "Invoiced Quantity"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Fact_ItemLedgerEntry.Invoiced Quantity)",
+              "nativeQueryRef": "Sum of Invoiced Quantity"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_ValueEntry"
+                        }
+                      },
+                      "Property": "Sales Amount (Actual)"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Fact_ValueEntry.Sales Amount (Actual))",
+              "nativeQueryRef": "Sum of Sales Amount (Actual)"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_ValueEntry"
+                        }
+                      },
+                      "Property": "Purchase Amount (Actual)"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Fact_ValueEntry.Purchase Amount (Actual))",
+              "nativeQueryRef": "Sum of Purchase Amount (Actual)"
+            }
+          ]
+        },
+        "Target": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_EntryType"
+                    }
+                  },
+                  "Property": "EntryTypeLabel"
+                }
+              },
+              "queryRef": "Dim_EntryType.EntryTypeLabel",
+              "nativeQueryRef": "EntryTypeLabel"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Fact_ItemLedgerEntry"
+                      }
+                    },
+                    "Property": "Invoiced Quantity"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "keyDrivers": [
+        {
+          "properties": {
+            "selectedAnalysis": {
+              "expr": {
+                "Literal": {
+                  "Value": "'keyInfluencers'"
+                }
+              }
+            },
+            "targetValue": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Consumption'''"
+                }
+              }
+            },
+            "numericTargetSelectedKind": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,226 @@
+table Dim_Category
+	lineageTag: 901fac75-8ffe-4f9f-a850-4ceb53977a71
+
+	column Code
+		dataType: string
+		isNullable: false
+		sourceProviderType: nvarchar(20)
+		lineageTag: 2e310ea4-ea0f-4cff-b1d0-c844d0055916
+		summarizeBy: none
+		sourceColumn: Code
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation __PBI_SemanticLinks = [{"LinkTarget":{"TableName":"Dim_Category","TableItemName":"Code (groups)","ObjectType":4},"LinkType":"UsedInGroup"},{"LinkTarget":{"TableName":"Dim_Category","TableItemName":"Code (clusters)","ObjectType":4},"LinkType":"UsedInGroup"}]
+
+	column 'Parent Category'
+		dataType: string
+		isNullable: false
+		sourceProviderType: nvarchar(20)
+		lineageTag: 59d66734-faa9-48e8-a5f1-8e61bb0023bc
+		summarizeBy: none
+		sourceColumn: Parent Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: string
+		isNullable: false
+		sourceProviderType: nvarchar(100)
+		lineageTag: d2d5db40-9308-410f-a902-9cacd92b28c6
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column Indentation
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 9a0180ac-9531-4c55-9616-e29fd3027191
+		summarizeBy: sum
+		sourceColumn: Indentation
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Presentation Order'
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 1cd6d408-2da9-4b14-8028-62a54e3f9d06
+		summarizeBy: sum
+		sourceColumn: Presentation Order
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Has Children'
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: tinyint
+		lineageTag: 86427094-a7f2-478c-97b0-2042b97bf0d4
+		summarizeBy: sum
+		sourceColumn: Has Children
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Last Modified Date Time'
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: datetime
+		lineageTag: 4af77c8a-d610-4647-8ca1-ae31ddd62742
+		summarizeBy: none
+		sourceColumn: Last Modified Date Time
+
+		variation Variation
+			isDefault
+			relationship: a76a5efc-c136-4954-8add-3854876e47ce
+			defaultHierarchy: LocalDateTable_c1430979-f899-4708-8967-30b397692c3c.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column $systemId
+		dataType: string
+		isNullable: false
+		sourceProviderType: uniqueidentifier
+		lineageTag: b2a6064d-7c7b-4cc4-913e-c514f0b14808
+		summarizeBy: none
+		sourceColumn: $systemId
+
+		annotation SummarizationSetBy = Automatic
+
+	column $systemCreatedAt
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: datetime
+		lineageTag: 9cb35bbf-ad53-459e-8a77-6522593ac571
+		summarizeBy: none
+		sourceColumn: $systemCreatedAt
+
+		variation Variation
+			isDefault
+			relationship: df4f62f7-1b93-488c-89e3-cff6f6532e2d
+			defaultHierarchy: LocalDateTable_a267c31f-dd84-4197-9a87-91d4bd9c0484.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column $systemCreatedBy
+		dataType: string
+		isNullable: false
+		sourceProviderType: uniqueidentifier
+		lineageTag: 22806f3f-d090-4674-8711-198950f5e8a0
+		summarizeBy: none
+		sourceColumn: $systemCreatedBy
+
+		annotation SummarizationSetBy = Automatic
+
+	column $systemModifiedAt
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: datetime
+		lineageTag: a87b4a63-956a-48ff-80e0-3e9ebc71286a
+		summarizeBy: none
+		sourceColumn: $systemModifiedAt
+
+		variation Variation
+			isDefault
+			relationship: eb04d3ab-077a-4323-9b74-996cab8aae0c
+			defaultHierarchy: LocalDateTable_f111d10d-597f-4f27-bf8f-119f38c6b567.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column $systemModifiedBy
+		dataType: string
+		isNullable: false
+		sourceProviderType: uniqueidentifier
+		lineageTag: c378e321-56e8-49a9-9998-9b799250a054
+		summarizeBy: none
+		sourceColumn: $systemModifiedBy
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Code (groups)' =
+			SWITCH(
+				TRUE,
+				ISBLANK('Dim_Category'[Code]),
+				"(Blank)",
+				'Dim_Category'[Code] IN {"MISC",
+					"CHAIR"},
+				"CHAIR & MISC",
+				"Other"
+			)
+		lineageTag: 1e53df94-cf42-4adb-8955-641c98393d28
+		summarizeBy: none
+
+		extendedProperty GroupingMetadata =
+				{
+				  "version": 0,
+				  "groupedColumns": [
+				    {
+				      "Column": {
+				        "Expression": {
+				          "SourceRef": {
+				            "Entity": "Dim_Category"
+				          }
+				        },
+				        "Property": "Code"
+				      }
+				    }
+				  ]
+				}
+
+		annotation GroupingDesignState = {"Version":0,"Sources":[{"Name":"d","Entity":"Dim_Category"}],"GroupedColumns":[{"Column":{"Expression":{"SourceRef":{"Source":"d"}},"Property":"Code"}}],"GroupItems":[{"DisplayName":"(Blank)","BlankDefaultPlaceholder":true},{"DisplayName":"CHAIR & MISC","Expression":{"In":{"Expressions":[{"Column":{"Expression":{"SourceRef":{"Source":"d"}},"Property":"Code"}}],"Values":[[{"Literal":{"Value":"'MISC'"}}],[{"Literal":{"Value":"'CHAIR'"}}]]}}},{"DisplayName":"Other"}]}
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Clusters for Code
+	column 'Code (clusters)' = ```
+			VAR __ClusterValue = 
+				LOOKUPVALUE('ClusterMappingTable'[ClusterId], 'ClusterMappingTable'[Code], 'Dim_Category'[Code])
+			
+			RETURN
+				SWITCH(
+					__ClusterValue,
+					BLANK(),
+					BLANK(),
+					CONCATENATE("Cluster", __ClusterValue)
+				)
+			```
+		lineageTag: 89edb30e-9b6d-45a6-aac4-0ea504e26438
+		summarizeBy: none
+
+		extendedProperty GroupingMetadata =
+				{
+				  "version": 0,
+				  "groupedColumns": [
+				    {
+				      "Column": {
+				        "Expression": {
+				          "SourceRef": {
+				            "Entity": "Dim_Category"
+				          }
+				        },
+				        "Property": "Code"
+				      }
+				    }
+				  ]
+				}
+
+		annotation GroupingDesignState = {"Version":0,"Sources":[{"Name":"d","Entity":"Dim_Category"}],"GroupedColumns":[{"Column":{"Expression":{"SourceRef":{"Source":"d"}},"Property":"Code"}}],"PartitionTable":{"Definition":{"TableDefinition":{"Version":2,"From":[{"Name":"d","Entity":"Dim_Category"},{"Name":"f","Entity":"Fact_ValueEntry"}],"Where":[],"OrderBy":[],"Select":[{"Column":{"Expression":{"TransformTableRef":{"Source":"output0"}},"Property":"Dim_Category.Code"},"Name":"Dim_Category.Code"},{"Column":{"Expression":{"TransformTableRef":{"Source":"output0"}},"Property":"clusterId"},"Name":"clusterId"}],"GroupBy":[],"Transform":[{"Name":"KMeansClustering","Algorithm":"KMeansClustering","Input":{"Parameters":[{"Literal":{"Value":"3L"},"Name":"NumberOfClusters"}],"Table":{"Name":"input0","Columns":[{"Role":"Item","Expression":{"Column":{"Expression":{"SourceRef":{"Source":"d"}},"Property":"Code"},"Name":"Dim_Category.Code"}},{"Role":"Attribute","Expression":{"Aggregation":{"Function":0,"Expression":{"Column":{"Expression":{"SourceRef":{"Source":"f"}},"Property":"Discount Amount"}}},"Name":"Sum(Fact_ValueEntry.Discount Amount)"}},{"Role":"Attribute","Expression":{"Aggregation":{"Function":0,"Expression":{"Column":{"Expression":{"SourceRef":{"Source":"f"}},"Property":"Sales Amount (Actual)"}}},"Name":"Sum(Fact_ValueEntry.Sales Amount (Actual))"}}]}},"Output":{"Table":{"Name":"output0","Columns":[{"Expression":{"Column":{"Expression":{"TransformTableRef":{"Source":"input0"}},"Property":"Dim_Category.Code"},"Name":"Dim_Category.Code"}},{"Role":"Series","Expression":{"TransformOutputRoleRef":{"Role":"ClusterId"},"Name":"clusterId"}}]}}}]},"ItemIdColumns":["Dim_Category.Code"],"PartitionIdColumn":"clusterId","Partitions":[{"PartitionIds":[{"Literal":{"Value":"null"}}]}],"DefaultPartitionPrefix":"Cluster"},"Result":{"TableName":"ClusterMappingTable","PartitionIdColumn":"ClusterId","ItemIdMappings":[[{"PartitionTableColumn":{"Column":{"Expression":{"SourceRef":{"Entity":"ClusterMappingTable"}},"Property":"Code"}},"SourceTableColumn":{"Column":{"Expression":{"SourceRef":{"Entity":"Dim_Category"}},"Property":"Code"}}}]]}}}
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Category = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("arggotest1.database.windows.net", "DynamicsBC_CatalinT"),
+				    #"dbo_CRONUS International Ltd_$Item Category$437dbf0e-84ff-417a-965d-ed2bb9650972" = Source{[Schema="dbo",Item="CRONUS International Ltd_$Item Category$437dbf0e-84ff-417a-965d-ed2bb9650972"]}[Data]
+				in
+				    #"dbo_CRONUS International Ltd_$Item Category$437dbf0e-84ff-417a-965d-ed2bb9650972"
+

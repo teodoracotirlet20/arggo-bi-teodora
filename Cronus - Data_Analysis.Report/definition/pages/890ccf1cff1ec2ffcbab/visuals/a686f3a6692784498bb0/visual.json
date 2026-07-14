@@ -1,0 +1,88 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "a686f3a6692784498bb0",
+  "position": {
+    "x": 938.961038961039,
+    "y": 512.987012987013,
+    "z": 13000,
+    "height": 487.012987012987,
+    "width": 761.038961038961,
+    "tabOrder": 13000
+  },
+  "visual": {
+    "visualType": "pythonVisual",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_ValueEntry"
+                    }
+                  },
+                  "Property": "Sales Amount (Actual)"
+                }
+              },
+              "queryRef": "Fact_ValueEntry.Sales Amount (Actual)",
+              "nativeQueryRef": "Sales Amount (Actual)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_ValueEntry"
+                    }
+                  },
+                  "Property": "Discount Amount"
+                }
+              },
+              "queryRef": "Fact_ValueEntry.Discount Amount",
+              "nativeQueryRef": "Discount Amount"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Category"
+                    }
+                  },
+                  "Property": "Code"
+                }
+              },
+              "queryRef": "Dim_Category.Code",
+              "nativeQueryRef": "Code"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "script": [
+        {
+          "properties": {
+            "source": {
+              "expr": {
+                "Literal": {
+                  "Value": "'# The following code to create a dataframe and remove duplicated rows is always executed and acts as a preamble for your script: \n\n# dataset = pandas.DataFrame(Sales Amount (Actual), Discount Amount, Code)\n# dataset = dataset.drop_duplicates()\n\n# Paste or type your script code here:\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport matplotlib.ticker as ticker\n\n# 1. Curățăm datele de valori lipsă pe componentele esențiale\ndf = dataset.dropna(subset=[''Sales Amount (Actual)'', ''Discount Amount'', ''Code''])\n\n# 2. Configurăm pânza graficului\nfig, ax = plt.subplots(figsize=(11, 6), facecolor=''white'')\n\n# 3. Desenăm Scatter Plot-ul cu Seaborn\nsns.scatterplot(\n    data=df,\n    x=''Sales Amount (Actual)'',\n    y=''Discount Amount'',\n    hue=''Code'',              # Colorează punctele diferit în funcție de categorie\n    palette=''Dark2'',         # O paletă de culori contrastantă și profesională\n    alpha=0.7,               # Adăugăm transparență punctelor pentru a vedea unde se suprapun\n    s=100,                   # Dimensiunea punctelor (bulele)\n    edgecolor=''w'',           # Contur alb fin în jurul fiecărui punct pentru delimitare\n    ax=ax\n)\n\n# 4. Personalizăm titlurile și axele\nax.set_title(''Analiza corelației: Valoare Vânzare vs. Discount Acordat'', fontsize=16, fontweight=''bold'', pad=20, loc=''left'')\nax.set_xlabel(''Valoare Vânzare Brută (Sales Amount)'', fontsize=12, labelpad=10, fontweight=''semibold'')\nax.set_ylabel(''Valoare Discount (Discount Amount)'', fontsize=12, labelpad=10, fontweight=''semibold'')\n\n# Formatăm ambele axe pentru a pune virgulă la mii (ex: 50,000 în loc de 50000)\nax.xaxis.set_major_formatter(ticker.FuncFormatter(lambda x, p: format(int(x), '','')))\nax.yaxis.set_major_formatter(ticker.FuncFormatter(lambda x, p: format(int(x), '','')))\n\n# 5. Finisaje de design (aspect curat, fără chenare inutile)\nax.spines[''top''].set_visible(False)\nax.spines[''right''].set_visible(False)\nax.spines[''left''].set_color(''#E0E0E0'')\nax.spines[''bottom''].set_color(''#E0E0E0'')\n\n# Activăm un grid discret pe fundal pentru a putea urmări ușor poziția bulelor\nax.grid(True, linestyle=''--'', alpha=0.3, color=''#666666'')\n\n# Mutăm legenda în afara graficului (în dreapta) ca să nu se suprapună peste puncte\nplt.legend(bbox_to_anchor=(1.02, 1), loc=''upper left'', title=''Categorii de Produse'', frameon=False)\n\nplt.tight_layout()\n\n# 6. Rulăm vizualul\nplt.show()'"
+                }
+              }
+            },
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Python'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

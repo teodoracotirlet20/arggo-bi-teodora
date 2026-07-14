@@ -1,0 +1,60 @@
+table ClusterMappingTable
+	isHidden
+	isPrivate
+	lineageTag: 872ae3c1-e080-447d-b512-0703879660e3
+
+	column Code
+		lineageTag: a14f53f1-f7d9-4c5f-9eb8-44a1d0235473
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Code]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation __PBI_SemanticLinks = [{"LinkTarget":{"TableName":"Dim_Category","TableItemName":"Code (clusters)","ObjectType":4},"LinkType":"UsedInGroup"}]
+
+	column ClusterId
+		formatString: 0
+		lineageTag: e0b38ba0-8d3c-4371-81a2-25f797c06c20
+		summarizeBy: count
+		isNameInferred
+		sourceColumn: [ClusterId]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation __PBI_SemanticLinks = [{"LinkTarget":{"TableName":"Dim_Category","TableItemName":"Code (clusters)","ObjectType":4},"LinkType":"UsedInGroup"}]
+
+	partition ClusterMappingTable = calculated
+		mode: import
+		source = ```
+				VAR __DS0Core = 
+					SUMMARIZECOLUMNS(
+						'Dim_Category'[Code],
+						"SumDiscount_Amount", CALCULATE(SUM('Fact_ValueEntry'[Discount Amount])),
+						"SumSales_Amount__Actual_", CALCULATE(SUM('Fact_ValueEntry'[Sales Amount (Actual)]))
+					)
+				
+				VAR __DataTransformT0 = 
+					KMeansClustering(
+						SELECTCOLUMNS(
+							__DS0Core,
+							"Code", 'Dim_Category'[Code],
+							"SumDiscount_Amount", [SumDiscount_Amount],
+							"SumSales_Amount__Actual_", [SumSales_Amount__Actual_]
+						),
+						{("[Code]", "Item"),
+							("[SumDiscount_Amount]", "Attribute"),
+							("[SumSales_Amount__Actual_]", "Attribute")},
+						{("[Code]", BLANK()),
+							("ClusterId", "ClusterId")},
+						3
+					)
+				
+				RETURN __DataTransformT0
+				```
+			retainDataTillForceCalculate
+
+	annotation ClusterMappingTable = true
+
+	annotation __PBI_SemanticLinks = [{"LinkTarget":{"TableName":"Dim_Category","TableItemName":"Code (clusters)","ObjectType":4},"LinkType":"UsedInGroup"}]
+

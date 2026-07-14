@@ -1,0 +1,737 @@
+table Fact_ValueEntry
+	lineageTag: dfa4a7fe-cfca-4104-a9a0-a355420cbba3
+
+	column 'Entry No_'
+		dataType: int64
+		formatString: 0
+		lineageTag: 7f8a3b56-dd7e-44a8-8fa4-f4c5d76c4d09
+		summarizeBy: sum
+		sourceColumn: Entry No_
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Item No_'
+		dataType: string
+		lineageTag: bbf87534-ed90-405a-9aec-7f3d8dc398fc
+		summarizeBy: none
+		sourceColumn: Item No_
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Posting Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: d2844772-a6cd-4b05-b34c-cb44e62c660e
+		summarizeBy: none
+		sourceColumn: Posting Date
+
+		variation Variation
+			isDefault
+			relationship: 286fe85e-91d7-4893-999a-462c97eb6f72
+			defaultHierarchy: LocalDateTable_7a385108-b1f6-4cc3-8f60-70eb21e4c3e2.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Item Ledger Entry Type'
+		dataType: int64
+		formatString: 0
+		lineageTag: 849d6501-1a24-4a81-9802-68216e50a363
+		summarizeBy: sum
+		sourceColumn: Item Ledger Entry Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Source No_'
+		dataType: string
+		lineageTag: 3150d18c-c92e-41b2-a601-698288a93807
+		summarizeBy: none
+		sourceColumn: Source No_
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Document No_'
+		dataType: string
+		lineageTag: d01f6b45-830d-4415-86a9-05743593c39e
+		summarizeBy: none
+		sourceColumn: Document No_
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Location Code'
+		dataType: string
+		lineageTag: 838f5d1c-3bb7-4991-b3e2-3e52543b0160
+		summarizeBy: none
+		sourceColumn: Location Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Inventory Posting Group'
+		dataType: string
+		lineageTag: 981c042d-1bd4-4a92-8ea2-20a5ebd4e6a8
+		summarizeBy: none
+		sourceColumn: Inventory Posting Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Item Ledger Entry No_'
+		dataType: int64
+		formatString: 0
+		lineageTag: 826d2512-1fc2-4112-8409-30f1cf7e3c32
+		summarizeBy: none
+		sourceColumn: Item Ledger Entry No_
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Valued Quantity'
+		dataType: double
+		lineageTag: d3cb30ef-d10a-4c9d-8cf2-ad853e98e02b
+		summarizeBy: sum
+		sourceColumn: Valued Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Item Ledger Entry Quantity'
+		dataType: double
+		lineageTag: c26fa9d7-fb2a-4618-83fa-da96e09dc192
+		summarizeBy: sum
+		sourceColumn: Item Ledger Entry Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Invoiced Quantity'
+		dataType: double
+		lineageTag: 0593027a-c1d2-45d5-93d1-14103a3ca00b
+		summarizeBy: sum
+		sourceColumn: Invoiced Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Cost per Unit'
+		dataType: double
+		lineageTag: ead4dc6a-bfca-49a9-abb7-4a9f3618029f
+		summarizeBy: sum
+		sourceColumn: Cost per Unit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Sales Amount (Actual)'
+		dataType: double
+		lineageTag: 4c5b6483-0352-4bdc-80b4-aa1c51754a4b
+		summarizeBy: sum
+		sourceColumn: Sales Amount (Actual)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		annotation __PBI_SemanticLinks = [{"LinkTarget":{"TableName":"Dim_Category","TableItemName":"Code (clusters)","ObjectType":4},"LinkType":"UsedInGroup"}]
+
+	column 'Item Register No_'
+		dataType: int64
+		formatString: 0
+		lineageTag: 425b1640-8813-4d7b-87f0-c921b6968956
+		summarizeBy: sum
+		sourceColumn: Item Register No_
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Discount Amount'
+		dataType: double
+		lineageTag: c6193975-2bf4-4347-8072-15e2d2208f45
+		summarizeBy: sum
+		sourceColumn: Discount Amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		annotation __PBI_SemanticLinks = [{"LinkTarget":{"TableName":"Dim_Category","TableItemName":"Code (clusters)","ObjectType":4},"LinkType":"UsedInGroup"}]
+
+	column 'User ID'
+		dataType: string
+		lineageTag: 2ecfbee3-0f20-47b1-9735-ce32f5d29436
+		summarizeBy: none
+		sourceColumn: User ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Source Code'
+		dataType: string
+		lineageTag: ce8cd8fe-8fce-47ff-a343-199c62b015ed
+		summarizeBy: none
+		sourceColumn: Source Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Source Type'
+		dataType: int64
+		formatString: 0
+		lineageTag: a5df33d9-3c87-4a64-80a2-7b6184225a31
+		summarizeBy: none
+		sourceColumn: Source Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cost Amount (Actual)'
+		dataType: double
+		lineageTag: a37805c8-d1e4-4fa2-86db-55ed0109d90f
+		summarizeBy: sum
+		sourceColumn: Cost Amount (Actual)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Cost Posted to G_L'
+		dataType: double
+		lineageTag: 24ad9fb4-1722-4762-9e8a-022c74121d64
+		summarizeBy: sum
+		sourceColumn: Cost Posted to G_L
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Journal Batch Name'
+		dataType: string
+		lineageTag: 39099ff2-0a85-4335-884d-e88146e6290a
+		summarizeBy: none
+		sourceColumn: Journal Batch Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Gen_ Prod_ Posting Group'
+		dataType: string
+		lineageTag: f3eea531-aac5-4207-a541-dfcdd22fb9d1
+		summarizeBy: none
+		sourceColumn: Gen_ Prod_ Posting Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Document Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 5438b69e-1bdf-49b7-8996-cf566847b122
+		summarizeBy: none
+		sourceColumn: Document Date
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Cost Amount (Actual) (ACY)'
+		dataType: double
+		lineageTag: bf446235-361f-4339-a178-e166270a666c
+		summarizeBy: sum
+		sourceColumn: Cost Amount (Actual) (ACY)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Cost Posted to G_L (ACY)'
+		dataType: double
+		lineageTag: ee1955cf-74c1-401f-8c78-bb57e9cdb662
+		summarizeBy: sum
+		sourceColumn: Cost Posted to G_L (ACY)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Cost per Unit (ACY)'
+		dataType: double
+		lineageTag: 121aed3f-ba60-496c-8736-de0ae76ca88b
+		summarizeBy: sum
+		sourceColumn: Cost per Unit (ACY)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Document Type'
+		dataType: int64
+		formatString: 0
+		lineageTag: c5a07176-bfe8-4c23-bc06-b5c6fc3553f0
+		summarizeBy: sum
+		sourceColumn: Document Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Document Line No_'
+		dataType: int64
+		formatString: 0
+		lineageTag: fcbe144b-4701-426a-91c4-dfb038fb307d
+		summarizeBy: sum
+		sourceColumn: Document Line No_
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'VAT Reporting Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 9a08edd0-609a-4ef0-a05b-450c4d0a8be8
+		summarizeBy: none
+		sourceColumn: VAT Reporting Date
+
+		variation Variation
+			isDefault
+			relationship: 098be65e-3d24-49fe-9b9d-feae94abcbcd
+			defaultHierarchy: LocalDateTable_e6d51b7d-c3ec-4534-b06a-6cf066be26aa.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order Type'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3e7eb0b2-3c90-4d5f-9a38-dcb64ef6b981
+		summarizeBy: sum
+		sourceColumn: Order Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order No_'
+		dataType: string
+		lineageTag: 2352d6fd-6cf9-4b8d-a9da-b3af6af56e89
+		summarizeBy: none
+		sourceColumn: Order No_
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Expected Cost'
+		dataType: int64
+		formatString: 0
+		lineageTag: a6ee5a8a-3306-426c-8d69-7681f598e210
+		summarizeBy: sum
+		sourceColumn: Expected Cost
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Valuation Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 1267e362-9abb-4467-b2f9-3156926791c6
+		summarizeBy: none
+		sourceColumn: Valuation Date
+
+		variation Variation
+			isDefault
+			relationship: 99ec0319-86ad-4fa9-9606-acd86b16d635
+			defaultHierarchy: LocalDateTable_04bd1565-a9c8-45a4-9be0-72e6b86c0cea.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Entry Type'
+		dataType: int64
+		formatString: 0
+		lineageTag: 87282382-1ab9-421c-80b6-2e407a197728
+		summarizeBy: none
+		sourceColumn: Entry Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Type
+		dataType: int64
+		formatString: 0
+		lineageTag: 38fbb008-caa5-4d83-a977-eeb21696a671
+		summarizeBy: sum
+		sourceColumn: Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Variance Type'
+		dataType: int64
+		formatString: 0
+		lineageTag: 6ba663e9-f9df-47bb-bc8d-6bf38bbfe3ed
+		summarizeBy: sum
+		sourceColumn: Variance Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Purchase Amount (Actual)'
+		dataType: double
+		lineageTag: 643fd842-cdd4-471e-b6c2-fbefad99a1e0
+		summarizeBy: sum
+		sourceColumn: Purchase Amount (Actual)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Purchase Amount (Expected)'
+		dataType: double
+		lineageTag: 2dacb722-df4c-4f07-b211-dbfbafd02fdb
+		summarizeBy: sum
+		sourceColumn: Purchase Amount (Expected)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Sales Amount (Expected)'
+		dataType: double
+		lineageTag: 4c74431b-850a-43c7-be7f-1a674f18c9d7
+		summarizeBy: sum
+		sourceColumn: Sales Amount (Expected)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Cost Amount (Expected)'
+		dataType: double
+		lineageTag: becd3ed8-1710-400e-a4c7-d2a34ef02b17
+		summarizeBy: sum
+		sourceColumn: Cost Amount (Expected)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Cost Amount (Non-Invtbl_)'
+		dataType: double
+		lineageTag: d6ccc0ed-9846-400e-96c6-1d7ae6c9560c
+		summarizeBy: sum
+		sourceColumn: Cost Amount (Non-Invtbl_)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Cost Amount (Expected) (ACY)'
+		dataType: double
+		lineageTag: 297935e9-7a78-434f-8bd4-95915187ed5b
+		summarizeBy: sum
+		sourceColumn: Cost Amount (Expected) (ACY)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Cost Amount (Non-Invtbl_)(ACY)'
+		dataType: double
+		lineageTag: 0338c3a6-fd27-41ef-a7ca-a7806b9bd011
+		summarizeBy: sum
+		sourceColumn: Cost Amount (Non-Invtbl_)(ACY)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Expected Cost Posted to G_L'
+		dataType: double
+		lineageTag: 688e90f9-a481-40fa-b946-052c667bb49e
+		summarizeBy: sum
+		sourceColumn: Expected Cost Posted to G_L
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Exp_ Cost Posted to G_L (ACY)'
+		dataType: double
+		lineageTag: 439ae98d-4d3f-43e7-8517-307691d13f8c
+		summarizeBy: sum
+		sourceColumn: Exp_ Cost Posted to G_L (ACY)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Dimension Set ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 33d8d86b-1507-41b7-a077-c23d5573cf7b
+		summarizeBy: count
+		sourceColumn: Dimension Set ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Job No_'
+		dataType: string
+		lineageTag: f1dbf2d7-0e3e-4496-8185-03cbf686552d
+		summarizeBy: none
+		sourceColumn: Job No_
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Job Task No_'
+		dataType: string
+		lineageTag: 09975a69-16b6-4481-9935-7aef18ba2e33
+		summarizeBy: none
+		sourceColumn: Job Task No_
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Job Ledger Entry No_'
+		dataType: int64
+		formatString: 0
+		lineageTag: b498e27f-7086-45d7-a7cb-48f474a3b07b
+		summarizeBy: sum
+		sourceColumn: Job Ledger Entry No_
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Variant Code'
+		dataType: string
+		lineageTag: f6aaeadd-aee9-4a6d-af2b-92193163365c
+		summarizeBy: none
+		sourceColumn: Variant Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Adjustment
+		dataType: int64
+		formatString: 0
+		lineageTag: 9e259da6-488b-4b05-b5f5-57d8bd8113c8
+		summarizeBy: sum
+		sourceColumn: Adjustment
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Average Cost Exception'
+		dataType: int64
+		formatString: 0
+		lineageTag: f8ee493d-c8e9-46ba-8f06-46295c562629
+		summarizeBy: sum
+		sourceColumn: Average Cost Exception
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Capacity Ledger Entry No_'
+		dataType: int64
+		formatString: 0
+		lineageTag: 0df68eec-8472-4eba-8535-759bbc9fbb9b
+		summarizeBy: sum
+		sourceColumn: Capacity Ledger Entry No_
+
+		annotation SummarizationSetBy = Automatic
+
+	column No_
+		dataType: string
+		lineageTag: cf5c08a6-fb97-464f-bd26-72c851c02971
+		summarizeBy: none
+		sourceColumn: No_
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Return Reason Code'
+		dataType: string
+		lineageTag: f27c3e76-10bf-4560-be78-7c53e4404e1c
+		summarizeBy: none
+		sourceColumn: Return Reason Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: string
+		lineageTag: 6ebdf466-9c49-44e9-ac53-16ed615f1e62
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Source Posting Group'
+		dataType: string
+		lineageTag: ecc69fee-6aff-4280-917e-9fc2af73a04f
+		summarizeBy: none
+		sourceColumn: Source Posting Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SIFT Bucket No_'
+		dataType: int64
+		formatString: 0
+		lineageTag: 37f9ce8a-4416-42a4-a5e8-ce4e027adcb5
+		summarizeBy: sum
+		sourceColumn: SIFT Bucket No_
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Salespers__Purch_ Code'
+		dataType: string
+		lineageTag: 51871afc-0404-48c9-9332-be6b0ac337ec
+		summarizeBy: none
+		sourceColumn: Salespers__Purch_ Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Applies-to Entry'
+		dataType: int64
+		formatString: 0
+		lineageTag: cdeb6912-7cf0-4763-a591-42d24b58ba38
+		summarizeBy: sum
+		sourceColumn: Applies-to Entry
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Global Dimension 1 Code'
+		dataType: string
+		lineageTag: c9f147e8-5589-4deb-a6e6-32c860eb722c
+		summarizeBy: none
+		sourceColumn: Global Dimension 1 Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Global Dimension 2 Code'
+		dataType: string
+		lineageTag: 3d67e303-43d6-4bb3-bc57-865c27b9c446
+		summarizeBy: none
+		sourceColumn: Global Dimension 2 Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Reason Code'
+		dataType: string
+		lineageTag: d984d2b5-b3b0-461e-a60d-640cc002fced
+		summarizeBy: none
+		sourceColumn: Reason Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Drop Shipment'
+		dataType: int64
+		formatString: 0
+		lineageTag: d293c9e0-ddef-41f7-bc7f-4fd4bc4147a8
+		summarizeBy: sum
+		sourceColumn: Drop Shipment
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Gen_ Bus_ Posting Group'
+		dataType: string
+		lineageTag: ec19f946-3aaf-4816-bac7-d58c2107a264
+		summarizeBy: none
+		sourceColumn: Gen_ Bus_ Posting Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'External Document No_'
+		dataType: string
+		lineageTag: 63534b2b-3965-420f-a27a-361eedba36ae
+		summarizeBy: none
+		sourceColumn: External Document No_
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order Line No_'
+		dataType: int64
+		formatString: 0
+		lineageTag: 676780fa-e9f3-4872-8f39-6c665fc160f0
+		summarizeBy: sum
+		sourceColumn: Order Line No_
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Item Charge No_'
+		dataType: string
+		lineageTag: 87346024-a780-4226-b565-4623904e530d
+		summarizeBy: none
+		sourceColumn: Item Charge No_
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Valued By Average Cost'
+		dataType: int64
+		formatString: 0
+		lineageTag: ebde48b5-bfac-485d-8b5b-dee4ab768e95
+		summarizeBy: sum
+		sourceColumn: Valued By Average Cost
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Partial Revaluation'
+		dataType: int64
+		formatString: 0
+		lineageTag: c1b3ed41-6ca3-4854-9c82-7e01e3d945a7
+		summarizeBy: sum
+		sourceColumn: Partial Revaluation
+
+		annotation SummarizationSetBy = Automatic
+
+	column Inventoriable
+		dataType: int64
+		formatString: 0
+		lineageTag: 94ce43de-280d-46b9-ae81-8b0f6692b466
+		summarizeBy: sum
+		sourceColumn: Inventoriable
+
+		annotation SummarizationSetBy = Automatic
+
+	column $systemId
+		dataType: string
+		lineageTag: d59dc8f1-91b0-4991-bbba-097b6570ebf7
+		summarizeBy: none
+		sourceColumn: $systemId
+
+		annotation SummarizationSetBy = Automatic
+
+	column $systemCreatedAt
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a7badbb4-e910-4b47-9227-76a777187860
+		summarizeBy: none
+		sourceColumn: $systemCreatedAt
+
+		variation Variation
+			isDefault
+			relationship: b6e44401-d877-4dff-bfad-52c14374c4f8
+			defaultHierarchy: LocalDateTable_e9c6c104-6fa1-41f1-a047-bc173e660083.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column $systemCreatedBy
+		dataType: string
+		lineageTag: ddf57eb5-44e1-414c-a4a5-e8dda359de83
+		summarizeBy: none
+		sourceColumn: $systemCreatedBy
+
+		annotation SummarizationSetBy = Automatic
+
+	column $systemModifiedAt
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 57a8aff1-57c5-4608-ba80-6a876cdce1ed
+		summarizeBy: none
+		sourceColumn: $systemModifiedAt
+
+		variation Variation
+			isDefault
+			relationship: 7a857915-8fe8-42d7-b357-4534db79a4a8
+			defaultHierarchy: LocalDateTable_945c1735-4869-4cee-8324-b568f0365c3e.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column $systemModifiedBy
+		dataType: string
+		lineageTag: 04c8f90b-9b65-4ba9-acbe-181a89a296c9
+		summarizeBy: none
+		sourceColumn: $systemModifiedBy
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_ValueEntry = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("arggotest1.database.windows.net", "DynamicsBC_CatalinT"),
+				    #"dbo_CRONUS International Ltd_$Value Entry$437dbf0e-84ff-417a-965d-ed2bb9650972" = Source{[Schema="dbo",Item="CRONUS International Ltd_$Value Entry$437dbf0e-84ff-417a-965d-ed2bb9650972"]}[Data]
+				in
+				    #"dbo_CRONUS International Ltd_$Value Entry$437dbf0e-84ff-417a-965d-ed2bb9650972"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+	annotation __PBI_SemanticLinks = [{"LinkTarget":{"TableName":"Dim_Category","TableItemName":"Code (clusters)","ObjectType":4},"LinkType":"UsedInGroup"}]
+

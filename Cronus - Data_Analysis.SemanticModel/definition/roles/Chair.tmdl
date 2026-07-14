@@ -1,0 +1,7 @@
+role Chair
+	modelPermission: read
+
+	tablePermission Dim_Category = [Code] == "CHAIR"
+
+	annotation PBI_Id = 130ec07758e54bc89b8c9060533c2a32
+

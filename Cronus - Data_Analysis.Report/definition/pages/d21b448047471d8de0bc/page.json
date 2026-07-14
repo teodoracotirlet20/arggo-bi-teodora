@@ -1,0 +1,31 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "d21b448047471d8de0bc",
+  "displayName": "Python",
+  "displayOption": "FitToPage",
+  "height": 1000,
+  "width": 1700,
+  "pageBinding": {
+    "name": "19629e5f4e0dd8fb3baa",
+    "type": "Default",
+    "parameters": []
+  },
+  "objects": {
+    "filterCard": [
+      {
+        "properties": {
+          "textSize": {
+            "expr": {
+              "Literal": {
+                "Value": "8L"
+              }
+            }
+          }
+        },
+        "selector": {
+          "id": "Available"
+        }
+      }
+    ]
+  }
+}

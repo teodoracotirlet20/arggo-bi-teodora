@@ -1,0 +1,29 @@
+table 'Sale Forecast'
+	lineageTag: b8fd00fb-7849-4c75-8fda-c59b2c330163
+
+	measure 'Sale Forecast Value' = SELECTEDVALUE('Sale Forecast'[Sale Forecast], 1)
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 585922bd-50e8-4c28-aefd-2bed65902b74
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column 'Sale Forecast'
+		lineageTag: e58b8084-7b98-4a17-8828-e328bb6b9fc9
+		summarizeBy: none
+		sourceColumn: [Value]
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 0
+				}
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Sale Forecast' = calculated
+		mode: import
+		source = GENERATESERIES(CURRENCY(1), CURRENCY(1.5), CURRENCY(0.05))
+
+	annotation PBI_Id = f8eb2d8155dd4c7298f7c843340a20b6
+

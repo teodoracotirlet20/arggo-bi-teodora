@@ -1,0 +1,74 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "9c191f0f8821414ac2bd",
+  "position": {
+    "x": 80.519480519480524,
+    "y": 205.19480519480518,
+    "z": 10000,
+    "height": 493.50649350649348,
+    "width": 806.49350649350652,
+    "tabOrder": 10000
+  },
+  "visual": {
+    "visualType": "pythonVisual",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Category"
+                    }
+                  },
+                  "Property": "Code"
+                }
+              },
+              "queryRef": "Dim_Category.Code",
+              "nativeQueryRef": "Code"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_ValueEntry"
+                    }
+                  },
+                  "Property": "Sales Amount (Actual)"
+                }
+              },
+              "queryRef": "Fact_ValueEntry.Sales Amount (Actual)",
+              "nativeQueryRef": "Sales Amount (Actual)"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "script": [
+        {
+          "properties": {
+            "source": {
+              "expr": {
+                "Literal": {
+                  "Value": "'# The following code to create a dataframe and remove duplicated rows is always executed and acts as a preamble for your script: \n\n# dataset = pandas.DataFrame(Code, Sales Amount (Actual))\n# dataset = dataset.drop_duplicates()\n\n# Paste or type your script code here:\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport matplotlib.ticker as ticker\n\n# 1. Eliminăm rândurile goale pentru siguranță\ndataset = dataset.dropna(subset=[''Code'', ''Sales Amount (Actual)''])\n\n# 2. Grupăm datele și facem suma vânzărilor pe fiecare categorie (pentru că folosim coloana brută)\ndataset = dataset.groupby(''Code'')[''Sales Amount (Actual)''].sum().reset_index()\n\n# 3. Sortăm pentru a arăta cele mai mari vânzări sus\ndataset = dataset.sort_values(by=''Sales Amount (Actual)'', ascending=True)\n\n# 4. Creăm pânza graficului\nfig, ax = plt.subplots(figsize=(10, 6), facecolor=''white'')\n\ncategories = dataset[''Code'']\nvalues = dataset[''Sales Amount (Actual)'']\n\n# 5. Desenăm Lollipop Chart (băț + acadea)\nax.hlines(y=categories, xmin=0, xmax=values, color=''#D3D3D3'', linewidth=3)\nax.scatter(values, categories, color=''#0078D4'', s=150, zorder=3)\n\n# 6. Adăugăm etichetele cu sumele pe fiecare punct\nfor i, v in enumerate(values):\n    # Protecție anti-eroare: dacă v e 0, nu adăugăm textul, altfel îl formatăm cu virgulă\n    if pd.notna(v):\n        ax.text(v + (max(values) * 0.02), i, f\"{v:,.0f}\", \n                color=''#333333'', va=''center'', fontweight=''bold'', fontsize=10)\n\n# 7. Curățăm design-ul eliminând marginile (spines)\nax.spines[''top''].set_visible(False)\nax.spines[''right''].set_visible(False)\nax.spines[''bottom''].set_visible(False)\nax.spines[''left''].set_color(''#EEEEEE'')\n\n# 8. Titluri și formatare\nax.set_title(''Top Vânzări pe Categorii (Suma Brută)'', fontsize=16, fontweight=''bold'', loc=''left'', pad=20)\nax.set_xlabel(''Total Vânzări'', fontsize=12, color=''#666666'')\nax.set_ylabel('''')\n\n# Formatăm axa X\nax.xaxis.set_major_formatter(ticker.FuncFormatter(lambda x, p: format(int(x), '','')))\n\nplt.tight_layout()\n\n# 9. Afișăm graficul\nplt.show()'"
+                }
+              }
+            },
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Python'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

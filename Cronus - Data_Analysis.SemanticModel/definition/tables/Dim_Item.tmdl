@@ -1,0 +1,218 @@
+table Dim_Item
+	lineageTag: 065950f8-3bb7-4aa8-9b8f-d52bf2a56800
+
+	column No_
+		dataType: string
+		isNullable: false
+		sourceProviderType: nvarchar(20)
+		lineageTag: 90b448d3-a068-487d-ade6-e7768d2ba8d0
+		summarizeBy: none
+		sourceColumn: No_
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: string
+		isNullable: false
+		sourceProviderType: nvarchar(100)
+		lineageTag: a9abb04c-acb0-4bef-9827-4ebac41111d9
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Search Description'
+		dataType: string
+		isNullable: false
+		sourceProviderType: nvarchar(100)
+		lineageTag: 99ae3df0-c775-4a95-8141-a81a866783d2
+		summarizeBy: none
+		sourceColumn: Search Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Base Unit of Measure'
+		dataType: string
+		isNullable: false
+		sourceProviderType: nvarchar(10)
+		lineageTag: 8f931267-efa9-45d0-9e61-d7dd379bb214
+		summarizeBy: none
+		sourceColumn: Base Unit of Measure
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Price Unit Conversion'
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 48408e5d-8cca-4abb-a4a5-671efecbea12
+		summarizeBy: sum
+		sourceColumn: Price Unit Conversion
+
+		annotation SummarizationSetBy = Automatic
+
+	column Type
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 7f50bc68-b93b-427b-9ffe-baa0d529b457
+		summarizeBy: sum
+		sourceColumn: Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unit Price'
+		dataType: double
+		isNullable: false
+		sourceProviderType: decimal(38, 20)
+		lineageTag: 1d924fdb-5dfc-4a84-8aae-d6c0c6669b15
+		summarizeBy: sum
+		sourceColumn: Unit Price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Profit _'
+		dataType: double
+		isNullable: false
+		sourceProviderType: decimal(38, 20)
+		lineageTag: da60ddc6-f40a-47c3-bd5b-0075c370c501
+		summarizeBy: sum
+		sourceColumn: Profit _
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Unit Cost'
+		dataType: double
+		isNullable: false
+		sourceProviderType: decimal(38, 20)
+		lineageTag: 1545069d-be64-40ca-850c-5c78e7e4c3f0
+		summarizeBy: sum
+		sourceColumn: Unit Cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Standard Cost'
+		dataType: double
+		isNullable: false
+		sourceProviderType: decimal(38, 20)
+		lineageTag: 7037b336-dfe8-443b-87f7-ff546a3faf75
+		summarizeBy: sum
+		sourceColumn: Standard Cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Vendor No_'
+		dataType: string
+		isNullable: false
+		sourceProviderType: nvarchar(20)
+		lineageTag: 4c102826-9c8f-4da9-a5a8-2b91358953eb
+		summarizeBy: none
+		sourceColumn: Vendor No_
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Vendor Item No_'
+		dataType: string
+		isNullable: false
+		sourceProviderType: nvarchar(50)
+		lineageTag: 9e4a80bf-b520-495f-a9de-51c312313205
+		summarizeBy: none
+		sourceColumn: Vendor Item No_
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Gross Weight'
+		dataType: double
+		isNullable: false
+		sourceProviderType: decimal(38, 20)
+		lineageTag: 3ab68a38-5828-4212-9f5a-3e4fe056e7f0
+		summarizeBy: sum
+		sourceColumn: Gross Weight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Net Weight'
+		dataType: double
+		isNullable: false
+		sourceProviderType: decimal(38, 20)
+		lineageTag: 5b364c03-d4ff-4907-82a7-2fc89a7da061
+		summarizeBy: sum
+		sourceColumn: Net Weight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Price Includes VAT'
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: tinyint
+		lineageTag: b3559949-af32-45c8-9d9b-07799c43bc4b
+		summarizeBy: sum
+		sourceColumn: Price Includes VAT
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Item Category Id'
+		dataType: string
+		isNullable: false
+		sourceProviderType: uniqueidentifier
+		lineageTag: 04645cf5-3e4c-4ae6-8ea1-31e5a59054c7
+		summarizeBy: none
+		sourceColumn: Item Category Id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Item Category Code'
+		dataType: string
+		isNullable: false
+		sourceProviderType: nvarchar(20)
+		lineageTag: 70ddbaf1-075a-466f-88ea-a99d0b15c41f
+		summarizeBy: none
+		sourceColumn: Item Category Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Low Stock Flag' = ```
+			
+			VAR CurrentStock = [Quantity On Hand]
+			RETURN
+			IF(
+			    ISBLANK(CurrentStock) || CurrentStock < 20, 
+			    "Low Stock (<20)", 
+			    "Optimal Stock"
+			)
+			```
+		lineageTag: 1c72eeb1-e793-4867-9935-023d06b9353c
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Item = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("arggotest1.database.windows.net", "DynamicsBC_CatalinT"),
+				    #"dbo_CRONUS International Ltd_$Item$437dbf0e-84ff-417a-965d-ed2bb9650972" = Source{[Schema="dbo",Item="CRONUS International Ltd_$Item$437dbf0e-84ff-417a-965d-ed2bb9650972"]}[Data],
+				    #"Removed Columns" = Table.RemoveColumns(#"dbo_CRONUS International Ltd_$Item$437dbf0e-84ff-417a-965d-ed2bb9650972",{"No_ 2", "Description 2", "Duty Code", "Durability", "Freight Type", "Country_Region Purchased Code", "Block Reason", "VAT Bus_ Posting Gr_ (Price)", "No_ Series", "Tax Group Code", "Global Dimension 2 Code", "Application Wksh_ User ID", "GTIN", "Default Deferral Template Code", "Safety Lead Time", "Rescheduling Period", "Dampener Period", "Manufacturer Code", "Purchasing Code", "Expiration Calculation", "Warehouse Class Code", "Special Equipment Code", "Put-away Template Code", "Phys Invt Counting Period Code", "Inventory Posting Group", "Shelf No_", "Item Disc_ Group", "Allow Invoice Disc_", "Statistics Group", "Commission Group", "Costing Method", "Last Direct Cost", "Indirect Cost _", "Cost is Adjusted", "Allow Online Adjustment", "Lead Time Calculation", "Reorder Point", "Reorder Quantity", "Alternative Item No_", "Duty Due _", "Units per Parcel", "Unit Volume", "Tariff No_", "Duty Unit Conversion"}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Removed Columns",{"No_", "Description", "Search Description", "Base Unit of Measure", "Price Unit Conversion", "Type", "Unit Price", "Profit _", "Unit Cost", "Standard Cost", "Vendor No_", "Vendor Item No_", "Gross Weight", "Net Weight", "Price Includes VAT", "Item Category Code", "Item Category Id"})
+				in
+				    #"Removed Other Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

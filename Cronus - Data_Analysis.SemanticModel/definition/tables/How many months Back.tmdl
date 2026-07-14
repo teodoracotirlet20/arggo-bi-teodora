@@ -1,0 +1,26 @@
+table 'How many months Back'
+	lineageTag: 656a4a56-84a4-4b6f-b485-37d4b4758a34
+
+	measure 'How many months Back Value' = SELECTEDVALUE('How many months Back'[How many months Back], 1)
+		formatString: 0
+		lineageTag: 668b9cd6-bb3a-47fe-9994-7a97e06d412a
+
+	column 'How many months Back'
+		formatString: 0
+		lineageTag: a95cf0ee-1e83-40a1-8050-67808f320c8f
+		summarizeBy: none
+		sourceColumn: [Value]
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 0
+				}
+
+		annotation SummarizationSetBy = User
+
+	partition 'How many months Back' = calculated
+		mode: import
+		source = GENERATESERIES(1, 12, 1)
+
+	annotation PBI_Id = 4fc752d20e0a4e07909f0e8f104f58f1
+

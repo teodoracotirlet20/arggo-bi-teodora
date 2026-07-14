@@ -1,0 +1,312 @@
+table Fact_ItemLedgerEntry
+	lineageTag: 03fbd9f1-a625-4799-98b5-783ad84c3fed
+
+	column 'Entry No_'
+		dataType: int64
+		formatString: 0
+		lineageTag: 71a5df07-69b3-4e84-83fb-090d6ca2c2d1
+		summarizeBy: sum
+		sourceColumn: Entry No_
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Item No_'
+		dataType: string
+		lineageTag: bdc733f1-0a56-45e8-90e3-78541c33dc1b
+		summarizeBy: none
+		sourceColumn: Item No_
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Posting Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 59663080-4d55-4d89-8b5a-453a3cd9a048
+		summarizeBy: none
+		sourceColumn: Posting Date
+
+		variation Variation
+			isDefault
+			relationship: 46c1bbf4-e67e-44e7-acf8-419e5a2b4af8
+			defaultHierarchy: LocalDateTable_a2a9fb04-e2a9-46b8-883a-8d1f052a63d9.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Entry Type'
+		dataType: int64
+		formatString: 0
+		lineageTag: 8fe4f06d-1256-4816-afc3-e9f7ef7cbc1f
+		summarizeBy: none
+		sourceColumn: Entry Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Source No_'
+		dataType: string
+		lineageTag: 6de6efea-13c0-4ddc-a69c-a4158f7ee98b
+		summarizeBy: none
+		sourceColumn: Source No_
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Document No_'
+		dataType: string
+		lineageTag: 17bc2fab-9d49-4e82-b3db-cfe85e25147e
+		summarizeBy: none
+		sourceColumn: Document No_
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Location Code'
+		dataType: string
+		lineageTag: 92e10c61-b67e-4d36-87e1-9fd9fab0304d
+		summarizeBy: none
+		sourceColumn: Location Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantity
+		dataType: double
+		lineageTag: bd3578d8-e6b1-4aa5-8da0-6c184a69499b
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Remaining Quantity'
+		dataType: double
+		lineageTag: 1e9fb5e5-41f8-4490-b4d1-6174a741af90
+		summarizeBy: sum
+		sourceColumn: Remaining Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Invoiced Quantity'
+		dataType: double
+		lineageTag: 78b49f2a-7536-40ec-aa7a-926161b5e430
+		summarizeBy: sum
+		sourceColumn: Invoiced Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		annotation __PBI_SemanticLinks = [{"LinkTarget":{"TableName":"Fact_ItemLedgerEntry","TableItemName":"Invoiced Quantity (bins)","ObjectType":4},"LinkType":"UsedInGroup"}]
+
+	column 'Item Register No_'
+		dataType: int64
+		formatString: 0
+		lineageTag: fa0c8698-4517-4e70-9b50-1fae72d01384
+		summarizeBy: sum
+		sourceColumn: Item Register No_
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Source Type'
+		dataType: int64
+		formatString: 0
+		lineageTag: a26a1b79-b296-4d72-a106-6f9e88dfdaad
+		summarizeBy: none
+		sourceColumn: Source Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Country_Region Code'
+		dataType: string
+		lineageTag: c7e89146-6502-436f-8aee-ce4a8871048d
+		summarizeBy: none
+		sourceColumn: Country_Region Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Document Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 5f7b84a1-a027-4ffc-ab07-f47f4d5da9e8
+		summarizeBy: none
+		sourceColumn: Document Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Document Type'
+		dataType: int64
+		formatString: 0
+		lineageTag: 01ce44cc-8303-4a4e-b986-810efb4491eb
+		summarizeBy: sum
+		sourceColumn: Document Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Document Line No_'
+		dataType: int64
+		formatString: 0
+		lineageTag: 2013d671-6287-462d-9a6a-d5b4ee03dd3b
+		summarizeBy: sum
+		sourceColumn: Document Line No_
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order Type'
+		dataType: int64
+		formatString: 0
+		lineageTag: 2939c491-f79b-4831-af80-8cbb7e118a87
+		summarizeBy: sum
+		sourceColumn: Order Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order No_'
+		dataType: string
+		lineageTag: 2eb99dbb-f0f7-4949-a7f0-266626e8794b
+		summarizeBy: none
+		sourceColumn: Order No_
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order Line No_'
+		dataType: int64
+		formatString: 0
+		lineageTag: 8700b612-38a4-423b-bdfe-a694eb2c54ec
+		summarizeBy: sum
+		sourceColumn: Order Line No_
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Qty_ per Unit of Measure'
+		dataType: double
+		lineageTag: 7d3c1ebe-996a-47a3-8f23-8ccc5ead1c13
+		summarizeBy: sum
+		sourceColumn: Qty_ per Unit of Measure
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Unit of Measure Code'
+		dataType: string
+		lineageTag: 57c7b0af-abc8-424d-88a0-10ff64c86a15
+		summarizeBy: none
+		sourceColumn: Unit of Measure Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Item Category Code'
+		dataType: string
+		lineageTag: 1493d1d4-e4eb-486d-a224-69646f680f38
+		summarizeBy: none
+		sourceColumn: Item Category Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Last Invoice Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 32d64cc0-12fb-469b-85bf-506603de5bcb
+		summarizeBy: none
+		sourceColumn: Last Invoice Date
+
+		variation Variation
+			isDefault
+			relationship: f0da8025-da94-4ad5-9eec-40c821e74289
+			defaultHierarchy: LocalDateTable_81cd53ec-00fa-42b7-9d04-ae3105eb2c7d.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Item Tracking'
+		dataType: int64
+		formatString: 0
+		lineageTag: 4b5abaa8-4a99-4a43-b107-03eca2f8b91a
+		summarizeBy: sum
+		sourceColumn: Item Tracking
+
+		annotation SummarizationSetBy = Automatic
+
+	column SourceKey
+		dataType: double
+		lineageTag: 8a8ca03a-0a8e-4238-b873-4dc3ea91a0ed
+		summarizeBy: count
+		sourceColumn: SourceKey
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column EntryTypeLabel
+		dataType: string
+		lineageTag: e451ada1-bee7-4ca9-a599-2980c4c4d38e
+		summarizeBy: none
+		sourceColumn: EntryTypeLabel
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Invoiced Quantity (bins)' =
+			IF(
+				ISBLANK('Fact_ItemLedgerEntry'[Invoiced Quantity]),
+				BLANK(),
+				IF(
+					'Fact_ItemLedgerEntry'[Invoiced Quantity] >= 0,
+					ROUNDDOWN('Fact_ItemLedgerEntry'[Invoiced Quantity] / 807.14285714285711, 0) * 807.14285714285711,
+					ROUNDUP('Fact_ItemLedgerEntry'[Invoiced Quantity] / 807.14285714285711, 0) * 807.14285714285711
+				)
+			)
+		lineageTag: d25417e7-f4f9-4812-bf02-a6770ffbbedb
+		summarizeBy: none
+
+		extendedProperty GroupingMetadata =
+				{
+				  "version": 0,
+				  "groupedColumns": [
+				    {
+				      "Column": {
+				        "Expression": {
+				          "SourceRef": {
+				            "Entity": "Fact_ItemLedgerEntry"
+				          }
+				        },
+				        "Property": "Invoiced Quantity"
+				      }
+				    }
+				  ],
+				  "binningMetadata": {
+				    "binSize": {
+				      "value": 807.14285714285711,
+				      "unit": 0
+				    }
+				  }
+				}
+
+		annotation GroupingDesignState = {"Version":0,"Sources":[{"Name":"f","Entity":"Fact_ItemLedgerEntry"}],"GroupedColumns":[{"Column":{"Expression":{"SourceRef":{"Source":"f"}},"Property":"Invoiced Quantity"}}],"BinItem":{"Expression":{"Floor":{"Expression":{"Column":{"Expression":{"SourceRef":{"Source":"f"}},"Property":"Invoiced Quantity"}},"Size":807.14285714285711}}}}
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Fact_ItemLedgerEntry = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("arggotest1.database.windows.net", "DynamicsBC_CatalinT"),
+				    #"dbo_CRONUS International Ltd_$Item Ledger Entry$437dbf0e-84ff-417a-965d-ed2bb9650972" = Source{[Schema="dbo",Item="CRONUS International Ltd_$Item Ledger Entry$437dbf0e-84ff-417a-965d-ed2bb9650972"]}[Data],
+				    #"Filtered Rows" = Table.SelectRows(#"dbo_CRONUS International Ltd_$Item Ledger Entry$437dbf0e-84ff-417a-965d-ed2bb9650972", each true),
+				    #"Removed Columns" = Table.RemoveColumns(#"Filtered Rows",{"Area", "Originally Ordered Var_ Code", "Item Reference No_", "Purchasing Code", "Serial No_", "Lot No_", "Package No_", "Return Reason Code", "Originally Ordered No_", "Variant Code"}),
+				    #"Filtered Rows1" = Table.SelectRows(#"Removed Columns", each true),
+				    #"Removed Columns1" = Table.RemoveColumns(#"Filtered Rows1",{"Transaction Specification", "External Document No_", "Entry_Exit Point", "Transport Method", "Transaction Type", "Global Dimension 2 Code"}),
+				    #"Removed Columns2" = Table.RemoveColumns(#"Removed Columns1",{"timestamp"}),
+				    #"Duplicated Column" = Table.AddColumn(#"Removed Columns2", "SourceKey", each [Source Type], type number),
+				    #"Merged Queries" = Table.NestedJoin(#"Duplicated Column", {"Item No_"}, Dim_Item, {"No_"}, "Dim_Item", JoinKind.LeftOuter),
+				    #"Removed Columns3" = Table.RemoveColumns(#"Merged Queries",{"$systemId", "$systemCreatedAt", "$systemCreatedBy", "$systemModifiedAt", "$systemModifiedBy"}),
+				    #"Merged Queries1" = Table.NestedJoin(#"Removed Columns3", {"Entry Type"}, Dim_EntryType, {"EntryTypeID"}, "Dim_EntryType", JoinKind.LeftOuter),
+				    #"Expanded Dim_EntryType" = Table.ExpandTableColumn(#"Merged Queries1", "Dim_EntryType", {"EntryTypeLabel"}, {"EntryTypeLabel"}),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Expanded Dim_EntryType",{"Entry No_", "Item No_", "Posting Date", "Entry Type", "EntryTypeLabel", "Source No_", "Document No_", "Description", "Location Code", "Quantity", "Remaining Quantity", "Invoiced Quantity", "Item Register No_", "SIFT Bucket No_", "Applies-to Entry", "Open", "Global Dimension 1 Code", "Positive", "Shpt_ Method Code", "Source Type", "Drop Shipment", "Country_Region Code", "Document Date", "No_ Series", "Document Type", "Document Line No_", "Order Type", "Order No_", "Order Line No_", "Dimension Set ID", "Assemble to Order", "Job No_", "Job Task No_", "Job Purchase", "Qty_ per Unit of Measure", "Unit of Measure Code", "Derived from Blanket Order", "Out-of-Stock Substitution", "Item Category Code", "Nonstock", "Completely Invoiced", "Last Invoice Date", "Applied Entry to Adjust", "Correction", "Shipped Qty_ Not Returned", "Prod_ Order Comp_ Line No_", "Warranty Date", "Expiration Date", "Item Tracking", "SourceKey", "Dim_Item"}),
+				    #"Removed Columns4" = Table.RemoveColumns(#"Reordered Columns",{"SIFT Bucket No_", "Applies-to Entry", "Open", "Global Dimension 1 Code", "Positive", "Shpt_ Method Code", "Drop Shipment", "No_ Series", "Dimension Set ID", "Assemble to Order", "Job No_", "Job Task No_", "Job Purchase", "Derived from Blanket Order", "Out-of-Stock Substitution", "Nonstock", "Completely Invoiced", "Applied Entry to Adjust", "Correction", "Shipped Qty_ Not Returned", "Prod_ Order Comp_ Line No_", "Warranty Date", "Expiration Date", "Description"})
+				in
+				    #"Removed Columns4"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

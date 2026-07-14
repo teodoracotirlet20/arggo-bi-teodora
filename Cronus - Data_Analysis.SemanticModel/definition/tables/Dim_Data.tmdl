@@ -1,0 +1,66 @@
+table Dim_Data
+	lineageTag: dd490e29-a757-448f-b1c1-cb7116c61a50
+
+	column Date
+		formatString: Long Date
+		lineageTag: 69fc1442-4d8a-4e74-a635-cddbba4f7f44
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: 1a5c8e53-e927-4dc1-92bf-a1347f9006b9
+			defaultHierarchy: LocalDateTable_c6f58e8f-6b97-4b6a-80bd-89a2bbfff74e.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Month = FORMAT('DIM_DATA'[Date], "yyyy mmm")
+		lineageTag: 2e885462-124a-4d86-a69b-b83cfe827b92
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year = "FY" & YEAR('Dim_Data'[Date]) + IF(MONTH('Dim_Data'[Date]) > 6, 1, 0)
+		lineageTag: 6c98dc3c-1954-4d71-afd1-df4bf76f6488
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter =
+			
+			'DIM_DATA'[Year] & " Q"
+			    & IF(
+			        MONTH('DIM_DATA'[Date]) <= 3,
+			        3,
+			        IF(
+			            MONTH('DIM_DATA'[Date]) <= 6,
+			            4,
+			            IF(
+			                MONTH('DIM_DATA'[Date]) <= 9,
+			                1,
+			                2
+			            )
+			        )
+			    )
+		lineageTag: 1d1d7f5d-e56a-4254-a724-1199b953ddaf
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Data = calculated
+		mode: import
+		source =
+				
+				VAR MinYear = 2020
+				VAR MaxYear = YEAR(TODAY())
+				RETURN
+				CALENDAR(
+				    DATE(MinYear, 1, 1),
+				    DATE(MaxYear, 12, 31)
+				)
+
+	annotation PBI_Id = 681b9fec1a904ca2903a6420352e1c11
+

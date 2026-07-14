@@ -1,0 +1,60 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+/// Errors in queries that were loaded on 6/17/2026 12:42:49 PM.
+queryGroup 'Query Errors - 6/17/2026 12:42:49 PM'
+
+	annotation PBI_QueryGroupOrder = 0
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["Fact_ItemLedgerEntry","Dim_Item","Measures_Table","Dim_Vendor","Dim_Category","Dim_Location","Fact_ValueEntry","Dim_Customer","Dim_EntryType","Dim_EntryType_VE"]
+
+annotation PBI_ProTooling = ["DaxQueryView_Desktop","DevMode"]
+
+ref table Fact_ItemLedgerEntry
+ref table DateTableTemplate_527fcb39-cc07-43c6-a1e4-f97bca595d18
+ref table LocalDateTable_a2a9fb04-e2a9-46b8-883a-8d1f052a63d9
+ref table LocalDateTable_81cd53ec-00fa-42b7-9d04-ae3105eb2c7d
+ref table Dim_Data
+ref table DimSourceType
+ref table Dim_Item
+ref table Measures_Table
+ref table Dim_Vendor
+ref table Time_Intelligence
+ref table Dim_Location_Country
+ref table Dim_Category
+ref table Dim_Location
+ref table LocalDateTable_c6f58e8f-6b97-4b6a-80bd-89a2bbfff74e
+ref table LocalDateTable_2b26ba1b-b0ae-4731-8e7c-f43146a62b12
+ref table LocalDateTable_b9c60924-6976-4e8a-a788-8a6b1410f906
+ref table LocalDateTable_4315d579-b2d7-4238-aba0-3e3d45909bbe
+ref table LocalDateTable_a630ff3d-80e2-4f31-82b2-34a9acdddff2
+ref table LocalDateTable_c1430979-f899-4708-8967-30b397692c3c
+ref table LocalDateTable_a267c31f-dd84-4197-9a87-91d4bd9c0484
+ref table LocalDateTable_f111d10d-597f-4f27-bf8f-119f38c6b567
+ref table Fact_ValueEntry
+ref table LocalDateTable_e6d51b7d-c3ec-4534-b06a-6cf066be26aa
+ref table LocalDateTable_04bd1565-a9c8-45a4-9be0-72e6b86c0cea
+ref table Dim_Customer
+ref table LocalDateTable_08ed5e49-fa7a-41d8-a4a2-99ad35f6122a
+ref table LocalDateTable_22c07ceb-8ce5-4595-8c57-40716e158b94
+ref table Dim_EntryType
+ref table LocalDateTable_e9c6c104-6fa1-41f1-a047-bc173e660083
+ref table LocalDateTable_945c1735-4869-4cee-8324-b568f0365c3e
+ref table Dim_EntryType_VE
+ref table LocalDateTable_7a385108-b1f6-4cc3-8f60-70eb21e4c3e2
+ref table ClusterMappingTable
+ref table 'Sale Forecast'
+ref table 'How many months Back'
+
+ref role Chair
+ref role Acces_Total
+
+ref cultureInfo en-US
+

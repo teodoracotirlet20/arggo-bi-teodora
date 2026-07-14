@@ -1,0 +1,249 @@
+table Dim_Customer
+	lineageTag: 5bc74178-2ee2-4f65-bea7-57b3b04d94a8
+
+	column No_
+		dataType: string
+		lineageTag: 31a306dc-a1cb-46d6-a40f-e69a6d993ede
+		summarizeBy: none
+		sourceColumn: No_
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: 85bd2da4-bb45-4768-8f09-c3f7a41f18cf
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Search Name'
+		dataType: string
+		lineageTag: 9f490a34-67d7-406a-8c93-f9df9eba4784
+		summarizeBy: none
+		sourceColumn: Search Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Address
+		dataType: string
+		lineageTag: e788038b-7832-4547-8a1f-dae455b9ff24
+		summarizeBy: none
+		sourceColumn: Address
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: d3dbf75e-5df5-48e1-999b-e0241d7303a7
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column Contact
+		dataType: string
+		lineageTag: 540926fc-3229-40bc-b029-6606400aaba9
+		summarizeBy: none
+		sourceColumn: Contact
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Territory Code'
+		dataType: string
+		lineageTag: da0348e7-c2fd-445a-80c2-170bf5724fc2
+		summarizeBy: none
+		sourceColumn: Territory Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Global Dimension 1 Code'
+		dataType: string
+		lineageTag: 3ad220d5-a353-4d39-9679-277b79e38437
+		summarizeBy: none
+		sourceColumn: Global Dimension 1 Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer Posting Group'
+		dataType: string
+		lineageTag: 223f36b1-75e8-470f-814e-3c62a2fbbaec
+		summarizeBy: none
+		sourceColumn: Customer Posting Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Currency Code'
+		dataType: string
+		lineageTag: ed7fb0d5-3d37-4071-9032-f67909216354
+		summarizeBy: none
+		sourceColumn: Currency Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Language Code'
+		dataType: string
+		lineageTag: fd74b8aa-3049-4090-a169-a44edbfa5e1d
+		summarizeBy: none
+		sourceColumn: Language Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Salesperson Code'
+		dataType: string
+		lineageTag: e77cdecc-9b17-4f1c-88e3-20583961213d
+		summarizeBy: none
+		sourceColumn: Salesperson Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Shipment Method Code'
+		dataType: string
+		lineageTag: 702bf210-19a2-4ddf-b378-3f91ec6a19da
+		summarizeBy: none
+		sourceColumn: Shipment Method Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Invoice Disc_ Code'
+		dataType: string
+		lineageTag: 6c4c6de0-658f-495d-920c-e7730e712635
+		summarizeBy: none
+		sourceColumn: Invoice Disc_ Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Country_Region Code'
+		dataType: string
+		lineageTag: 42810e22-34bb-46e4-940a-f876b93c2f39
+		summarizeBy: none
+		sourceColumn: Country_Region Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Amount
+		dataType: double
+		lineageTag: d40e5ede-7ddb-45c5-b527-fcf375977254
+		summarizeBy: sum
+		sourceColumn: Amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Last Modified Date Time'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: f3ebde6a-3f20-4756-9438-b09687a520f0
+		summarizeBy: none
+		sourceColumn: Last Modified Date Time
+
+		variation Variation
+			isDefault
+			relationship: 94711521-fff7-4068-8088-e0fc0aa1ae24
+			defaultHierarchy: LocalDateTable_08ed5e49-fa7a-41d8-a4a2-99ad35f6122a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Last Date Modified'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: d9c9fa95-1d12-4ba5-916a-653e97fc4d19
+		summarizeBy: none
+		sourceColumn: Last Date Modified
+
+		variation Variation
+			isDefault
+			relationship: 758682db-58ba-4368-b5bd-9e96f9bb919f
+			defaultHierarchy: LocalDateTable_22c07ceb-8ce5-4595-8c57-40716e158b94.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Application Method'
+		dataType: int64
+		formatString: 0
+		lineageTag: 0d2ae3f7-b117-45ca-aeed-4d77f24462b2
+		summarizeBy: sum
+		sourceColumn: Application Method
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Location Code'
+		dataType: string
+		lineageTag: e24fdffc-319f-4ed4-a6b0-ed6d4083d684
+		summarizeBy: none
+		sourceColumn: Location Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Gen_ Bus_ Posting Group'
+		dataType: string
+		lineageTag: 453c11f5-0035-4f4e-9eeb-877ab0060b67
+		summarizeBy: none
+		sourceColumn: Gen_ Bus_ Posting Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Shipment Method Id'
+		dataType: string
+		lineageTag: 3c47ab6d-f21e-4dee-8e74-a3e3c9c9ae23
+		summarizeBy: none
+		sourceColumn: Shipment Method Id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Payment Method Id'
+		dataType: string
+		lineageTag: 5fed9678-b138-4126-a016-589182cadfe8
+		summarizeBy: none
+		sourceColumn: Payment Method Id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer Price Group'
+		dataType: string
+		lineageTag: 229a8039-2394-4488-acff-180ea5462f5a
+		summarizeBy: none
+		sourceColumn: Customer Price Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Registration Number'
+		dataType: string
+		lineageTag: a4da8a11-8f84-4b16-a942-c53f87b63112
+		summarizeBy: none
+		sourceColumn: Registration Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Statistics Group'
+		dataType: int64
+		formatString: 0
+		lineageTag: 54fff499-695c-4b93-8113-e6c0d335e189
+		summarizeBy: sum
+		sourceColumn: Statistics Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Contact ID'
+		dataType: string
+		lineageTag: fe184ad9-d961-42c9-ade7-adcc510a47c9
+		summarizeBy: none
+		sourceColumn: Contact ID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Customer = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("arggotest1.database.windows.net", "DynamicsBC_CatalinT"),
+				    #"dbo_CRONUS International Ltd_$Customer$437dbf0e-84ff-417a-965d-ed2bb9650972" = Source{[Schema="dbo",Item="CRONUS International Ltd_$Customer$437dbf0e-84ff-417a-965d-ed2bb9650972"]}[Data],
+				    #"Removed Columns" = Table.RemoveColumns(#"dbo_CRONUS International Ltd_$Customer$437dbf0e-84ff-417a-965d-ed2bb9650972",{"timestamp", "$systemId", "$systemCreatedAt", "$systemCreatedBy", "$systemModifiedAt", "$systemModifiedBy", "Tax Area ID", "Contact Graph Id", "Service Zone Code", "Combine Service Shipments", "Base Calendar Code", "Copy Sell-to Addr_ to Qte From", "Validate EU Vat Reg_ No_", "Allow Line Disc_", "Contact Type", "Mobile Phone No_", "Responsibility Center", "Shipping Advice", "Shipping Time", "Shipping Agent Service Code", "Price Calculation Method", "Coupled to CRM", "Cash Flow Payment Terms Code", "Primary Contact No_", "Disable Search by Name", "Allow Multiple Posting Groups", "Preferred Bank Account Code", "Exclude from Pmt_ Practices", "Image", "Privacy Blocked", "Currency Id", "IC Partner Code", "Prepayment _", "Partner Type", "Intrastat Partner Type", "Payment Terms Id", "Tax Area Code", "Tax Liable", "VAT Bus_ Posting Group", "Reserve", "Block Payment Tolerance", "Use GLN in Electronic Document", "E-Mail", "Home Page", "Reminder Terms Code", "GLN", "Post Code", "County", "EORI Number", "Fax No_", "Telex Answer Back", "VAT Registration No_", "Combine Shipments", "Prices Including VAT", "Priority", "Payment Method Code", "Format Region", "Blocked", "Invoice Copies", "Last Statement No_", "Print Statements", "Bill-to Customer No_", "Collection Method", "Customer Disc_ Group", "Shipping Agent Code", "Place of Export", "Name 2", "Address 2", "Phone No_", "Telex No_", "Document Sending Profile", "Ship-to Code", "Our Account No_", "Global Dimension 2 Code", "Chain Name", "Budgeted Amount", "Credit Limit (LCY)", "Payment Terms Code", "Fin_ Charge Terms Code", "No_ Series"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

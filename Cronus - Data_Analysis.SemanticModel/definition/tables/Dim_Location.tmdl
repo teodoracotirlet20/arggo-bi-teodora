@@ -1,0 +1,119 @@
+table Dim_Location
+	lineageTag: 897ac271-c599-40f9-b570-d8c02eed8898
+
+	column Code
+		dataType: string
+		isNullable: false
+		sourceProviderType: nvarchar(10)
+		lineageTag: 41c18ecd-0a5e-4372-9d09-216cbcfef342
+		summarizeBy: none
+		sourceColumn: Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		isNullable: false
+		sourceProviderType: nvarchar(100)
+		lineageTag: 0598cc26-8ccc-4f75-924d-85cd04dce354
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Address
+		dataType: string
+		isNullable: false
+		sourceProviderType: nvarchar(100)
+		lineageTag: 341d8549-92e1-4581-a9c5-0b98cf566427
+		summarizeBy: none
+		sourceColumn: Address
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		isNullable: false
+		sourceProviderType: nvarchar(30)
+		lineageTag: e47d34f3-1049-4e11-ad31-817123edec99
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column $systemId
+		dataType: string
+		isNullable: false
+		sourceProviderType: uniqueidentifier
+		lineageTag: 12304411-da20-4da3-9c13-69f0c4616c6f
+		summarizeBy: none
+		sourceColumn: $systemId
+
+		annotation SummarizationSetBy = Automatic
+
+	column $systemCreatedAt
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: datetime
+		lineageTag: 23058ce3-9ee9-4660-9d8d-b830aac3d2d9
+		summarizeBy: none
+		sourceColumn: $systemCreatedAt
+
+		variation Variation
+			isDefault
+			relationship: 3f2a338b-35fa-4410-a149-af35a8379060
+			defaultHierarchy: LocalDateTable_2b26ba1b-b0ae-4731-8e7c-f43146a62b12.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column $systemCreatedBy
+		dataType: string
+		isNullable: false
+		sourceProviderType: uniqueidentifier
+		lineageTag: 82e3648d-a96c-4297-82ea-676aa2c8f64b
+		summarizeBy: none
+		sourceColumn: $systemCreatedBy
+
+		annotation SummarizationSetBy = Automatic
+
+	column $systemModifiedAt
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: datetime
+		lineageTag: 4eefd582-9677-4943-b1ba-a6a2ba0f5b51
+		summarizeBy: none
+		sourceColumn: $systemModifiedAt
+
+		variation Variation
+			isDefault
+			relationship: 1715052b-acf2-486d-aaa5-c5df254367b9
+			defaultHierarchy: LocalDateTable_b9c60924-6976-4e8a-a788-8a6b1410f906.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column $systemModifiedBy
+		dataType: string
+		isNullable: false
+		sourceProviderType: uniqueidentifier
+		lineageTag: c32f928c-19a9-4f93-b905-e1e8ddac1d08
+		summarizeBy: none
+		sourceColumn: $systemModifiedBy
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Location = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("arggotest1.database.windows.net", "DynamicsBC_CatalinT"),
+				    #"dbo_CRONUS International Ltd_$Location$437dbf0e-84ff-417a-965d-ed2bb9650972" = Source{[Schema="dbo",Item="CRONUS International Ltd_$Location$437dbf0e-84ff-417a-965d-ed2bb9650972"]}[Data],
+				    #"Removed Other Columns" = Table.SelectColumns(#"dbo_CRONUS International Ltd_$Location$437dbf0e-84ff-417a-965d-ed2bb9650972",{"timestamp", "Code", "Name", "Address", "City", "$systemId", "$systemCreatedAt", "$systemCreatedBy", "$systemModifiedAt", "$systemModifiedBy"})
+				in
+				    #"Removed Other Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

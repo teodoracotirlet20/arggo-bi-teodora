@@ -1,0 +1,31 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "18e6a006ed8ed67b5e9b",
+  "displayName": "Dashboard",
+  "displayOption": "FitToPage",
+  "height": 1000,
+  "width": 1700,
+  "pageBinding": {
+    "name": "0c96033908b673b39e86",
+    "type": "Default",
+    "parameters": []
+  },
+  "objects": {
+    "filterCard": [
+      {
+        "properties": {
+          "textSize": {
+            "expr": {
+              "Literal": {
+                "Value": "8L"
+              }
+            }
+          }
+        },
+        "selector": {
+          "id": "Available"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,264 @@
+table Measures_Table
+	lineageTag: 850710f4-0a1d-490a-9c08-e1f3c81b0dd2
+
+	measure 'Sales Qty' = ```
+			
+			SUMX(
+			    FILTER('Fact_ItemLedgerEntry', RELATED('Dim_EntryType'[EntryTypeLabel]) = "Sale"), 
+			    'Fact_ItemLedgerEntry'[Quantity] * -1
+			)
+			```
+		lineageTag: 311dea3d-2549-4105-b208-b02ea34e5250
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales Amount' =
+			
+			CALCULATE(
+			    SUMX(
+			        'Fact_ItemLedgerEntry',
+			        'Fact_ItemLedgerEntry'[Quantity] * CALCULATE(
+			            MAX('Dim_Item'[Unit Price]),
+			            TREATAS(VALUES('Fact_ItemLedgerEntry'[Item No_]), 'Dim_Item'[No_])
+			        )
+			    ),
+			    'Fact_ItemLedgerEntry'[Entry Type] = 2
+			)
+		lineageTag: 9b68b1a3-8035-4d0b-87b6-10655477ed69
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Purchase Qty' = ```
+			
+			SUMX(
+			    FILTER('Fact_ItemLedgerEntry', RELATED('Dim_EntryType'[EntryTypeID]) = 1), 
+			    'Fact_ItemLedgerEntry'[Quantity]
+			)
+			```
+		lineageTag: 77744828-c3f1-4f81-a60c-05378c648ed3
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Purchase Amount' =
+			
+			CALCULATE(
+			    SUM('Fact_ValueEntry'[Purchase Amount (Actual)])
+			)
+		formatString: 0
+		lineageTag: a76850cf-3539-482b-8139-0a575ae9bb18
+
+	measure 'Stock On Date' =
+			
+			CALCULATE(
+			    SUM('Fact_ItemLedgerEntry'[Quantity]),
+			    FILTER(
+			        ALL('Dim_Data'),
+			        'Dim_Data'[Date] <= MAX('Dim_Data'[Date])
+			    )
+			)
+		lineageTag: 683df142-8eba-48fd-9fb1-9826d95a8cbb
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales LY' = ```
+			
+			CALCULATE(
+			    [Sales Amount], 
+			    SAMEPERIODLASTYEAR('Dim_Data'[Date])
+			)
+			```
+		displayFolder: Time_Intelligence
+		lineageTag: b726c5f5-c27c-4d53-820b-9f6b97ad2163
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales Previous Month' = ```
+			
+			CALCULATE(
+			    [Total Sales], 
+			    PREVIOUSMONTH('Dim_Data'[Date])
+			)
+			```
+		displayFolder: Time_Intelligence
+		lineageTag: c019c91e-e859-4aa8-8f94-1139c3c4b9fd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales MoM Var' = [Sales Amount] - [Sales Previous Month]
+		displayFolder: Time_Intelligence
+		lineageTag: 6f2702b4-4c58-40d5-85b2-705530829ad9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales MoM Var %' = ```
+			
+			DIVIDE(
+			    [Sales MoM Var], 
+			    [Sales Previous Month], 
+			    0
+			)
+			```
+		displayFolder: Time_Intelligence
+		lineageTag: aac461ae-f4ca-45de-a9af-d33f00334513
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales YearToDate' = ```
+			
+			TOTALYTD(
+			    [Sales Amount_1], 
+			    'Dim_Data'[Date]
+			)
+			```
+		displayFolder: Time_Intelligence
+		lineageTag: 80030229-ac72-49b5-9fae-81df4ada16e9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Invoice Count' =
+			
+			COUNTX(
+			    FILTER('Fact_ItemLedgerEntry', 'Fact_ItemLedgerEntry'[Entry Type] = 2),
+			    'Fact_ItemLedgerEntry'[Document No_]
+			)
+		formatString: 0
+		lineageTag: 6f0ab09f-8337-420f-8f48-7eef1d4f9656
+
+	measure 'Average Invoice Value' = ```
+			
+			DIVIDE(
+			    [Sales Amount], 
+			    [Invoice Count], 
+			    0
+			)
+			```
+		lineageTag: 06d68e34-61ba-4433-a089-c1b73609f28f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Quantity On Hand' = SUM('Fact_ItemLedgerEntry'[Quantity])
+		lineageTag: 94e3406f-ff7a-4067-9bf6-8e6541c8099a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Days Since Last Movement' =
+			
+			VAR LastPostingDate = MAX('Fact_ItemLedgerEntry'[Posting Date])
+			RETURN
+			IF(
+			    ISBLANK(LastPostingDate),
+			    BLANK(),
+			    DATEDIFF(LastPostingDate, TODAY(), DAY)
+			)
+		formatString: 0
+		displayFolder: Time_Intelligence
+		lineageTag: b039a58b-3295-4f89-8afd-53d9c88d14bb
+
+	measure 'Total Sales' = SUM('Fact_ValueEntry'[Sales Amount (Actual)])
+		displayFolder: Total
+		lineageTag: 14db54f6-5742-47d7-b85f-f54181c28866
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Gross Profit' = [Sales Amount] - [Total Sales]
+		lineageTag: fc4597e7-182a-4135-b656-96273ae9d91b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales Month-to-Date' = TOTALMTD([Sales Amount_1], 'Dim_Data'[Date])
+		displayFolder: Time_Intelligence
+		lineageTag: 8f1e03a3-2e5d-441a-9fca-e580bbaee1b0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Dynamic Quantity' =
+			
+			VAR _kpi = SELECTEDVALUE(Dim_EntryType[EntryTypeLabel])
+			RETURN
+			    SWITCH (
+			        TRUE (),
+			        _kpi = "Sales", [Sales Qty],
+			        _kpi = "Purchase", [Purchase Qty],
+			        BLANK()
+			    )
+		lineageTag: 37ee11a0-b92d-46d1-8e34-077bc32a452d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Discounts' = SUM('Fact_ValueEntry'[Discount Amount])
+		displayFolder: Total
+		lineageTag: 4675670c-dbc4-46a0-ae3a-35cad0cef26e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Purchases' = SUM('Fact_ValueEntry'[Purchase Amount (Actual)])
+		displayFolder: Total
+		lineageTag: c32b3a88-73b7-4d87-b809-01992bba182b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Amount' = [Purchase Amount] + [Sales Amount_1]
+		displayFolder: Total
+		lineageTag: 2c1f0e06-3d78-40da-a141-077369b46222
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales Amount_1' =
+			
+			CALCULATE(
+			    SUM('Fact_ValueEntry'[Sales Amount (Actual)]),
+			    'Dim_EntryType_VE'[EntryTypeLabel_VE] = 1
+			)
+		formatString: 0
+		lineageTag: 4f00488f-15e5-49a2-a062-a6ccfa6be62e
+
+	measure 'Gross Sales Forecast' =
+			
+			[Sales Amount] * [Sale Forecast Value]
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 4d10579f-ce4a-408d-b8c5-a9d8e5dedae0
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Sales Last Month' =
+			
+			CALCULATE(
+			    SUM('Fact_ValueEntry'[Sales Amount (Actual)]),
+			    PARALLELPERIOD(
+			        'Dim_Data'[Date],
+			        -1,
+			        MONTH
+			    )
+			)
+		displayFolder: Time_Intelligence
+		lineageTag: 7f934856-d052-4674-a1fa-6b4584c2d6fc
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales X Months ago' =
+			
+			CALCULATE(
+			    SUM('Fact_ValueEntry'[Sales Amount (Actual)]),
+			    PARALLELPERIOD(
+			        'Dim_Data'[Date],
+			        -1 * [How Many Months Back Value],
+			        MONTH
+			    )
+			)
+		displayFolder: Time_Intelligence
+		lineageTag: 67ff61a0-4a4e-4003-967f-0941ac29965a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Measures_Table = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+

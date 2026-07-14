@@ -1,0 +1,33 @@
+table Dim_EntryType_VE
+	lineageTag: e4eaf224-7c8c-4f89-908f-0edcf13f3b4f
+
+	column EntryTypeID_VE
+		dataType: int64
+		formatString: 0
+		lineageTag: 4368e403-667c-46c0-9252-c4aaa70f9d74
+		summarizeBy: none
+		sourceColumn: EntryTypeID_VE
+
+		annotation SummarizationSetBy = Automatic
+
+	column EntryTypeLabel_VE
+		dataType: string
+		lineageTag: b4bca8b9-e7c7-4980-904b-dbd37e6b2215
+		summarizeBy: none
+		sourceColumn: EntryTypeLabel_VE
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_EntryType_VE = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WMlDSUQooLUrOSCxOVYrViVYyBAoEJ+ZAOEYg2fzizJLMslQFx5Ss3BI9sLgxUNwvNT0RXdwEKB5SlJhXnJZaBBYwBQo45+cVl+YWlGTm54HFzIBi/qUlBaUlYK45kOuUk5iXDeZZAHmOxcWpuUk5lQroOi2RJWFGxAIA", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [EntryTypeID_VE = _t, EntryTypeLabel_VE = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"EntryTypeID_VE", Int64.Type}, {"EntryTypeLabel_VE", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

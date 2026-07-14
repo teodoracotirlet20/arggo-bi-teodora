@@ -1,0 +1,88 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "293e7914094cd4de0745",
+  "position": {
+    "x": 79.94121969140339,
+    "y": 499.63262307127115,
+    "z": 12000,
+    "height": 500.88170462894931,
+    "width": 798.16311535635566,
+    "tabOrder": 12000
+  },
+  "visual": {
+    "visualType": "pythonVisual",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Category"
+                    }
+                  },
+                  "Property": "Code"
+                }
+              },
+              "queryRef": "Dim_Category.Code",
+              "nativeQueryRef": "Code"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_ValueEntry"
+                    }
+                  },
+                  "Property": "Sales Amount (Actual)"
+                }
+              },
+              "queryRef": "Fact_ValueEntry.Sales Amount (Actual)",
+              "nativeQueryRef": "Sales Amount (Actual)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_ValueEntry"
+                    }
+                  },
+                  "Property": "Location Code"
+                }
+              },
+              "queryRef": "Fact_ValueEntry.Location Code",
+              "nativeQueryRef": "Location Code"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "script": [
+        {
+          "properties": {
+            "source": {
+              "expr": {
+                "Literal": {
+                  "Value": "'# The following code to create a dataframe and remove duplicated rows is always executed and acts as a preamble for your script: \n\n# dataset = pandas.DataFrame(Code, Sales Amount (Actual), Location Code)\n# dataset = dataset.drop_duplicates()\n\n# Paste or type your script code here:\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\n# 1. Curățăm datele de valori lipsă pe componentele cheie\ndf = dataset.dropna(subset=[''Code'', ''Location Code'', ''Sales Amount (Actual)''])\n\n# 2. Agregăm datele (Suma vânzărilor pe fiecare combinație de Categorie și Locație)\ngrouped_df = df.groupby([''Code'', ''Location Code''])[''Sales Amount (Actual)''].sum().reset_index()\n\n# 3. Pivotăm tabelul pentru a-l transforma în matricea cerută de Heatmap\n# Linii = Categorii (Code), Coloane = Depozite (Location Code), Celule = Vânzări\nmatrix_df = grouped_df.pivot(index=''Code'', columns=''Location Code'', values=''Sales Amount (Actual)'')\n\n# Înlocuim eventualele valori lipsă (unde nu s-a vândut nimic) cu 0 pentru a nu strica graficul\nmatrix_df = matrix_df.fillna(0)\n\n# 4. Configurăm pânza graficului\nfig, ax = plt.subplots(figsize=(12, 8), facecolor=''white'')\n\n# 5. Desenăm Heatmap-ul cu Seaborn\nsns.heatmap(\n    matrix_df, \n    annot=True,             # Afișează valorile numerice în fiecare celulă\n    fmt=\",.0f\",              # Formatează numerele cu virgulă la mii și fără zecimale\n    cmap=\"YlOrRd\",          # Paletă de culori: Galben (vânzări mici) -> Portocaliu -> Roșu închis (vânzări mari)\n    linewidths=.5,          # Linii fine de demarcație între celule\n    cbar_kws={''label'': ''Total Vânzări (Valoare Brută)''}, # Titlul legendei de culori\n    ax=ax\n)\n\n# 6. Personalizăm titlul și etichetele axelor\nax.set_title(''Distribuția Vânzărilor: Categorii vs. Locații Depozit'', fontsize=16, fontweight=''bold'', pad=20, loc=''left'')\nax.set_xlabel(''Cod Locație / Depozit (Location Code)'', fontsize=12, labelpad=10, fontweight=''semibold'')\nax.set_ylabel(''Categorie Produs (Code)'', fontsize=12, labelpad=10, fontweight=''semibold'')\n\n# Rotim etichetele dacă numele locațiilor sunt lungi\nplt.xticks(rotation=0) \nplt.yticks(rotation=0)\n\nplt.tight_layout()\n\n# 7. Afișăm heatmap-ul\nplt.show()'"
+                }
+              }
+            },
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Python'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

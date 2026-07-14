@@ -1,0 +1,76 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "cf25efc10a5d0194ab3b",
+  "position": {
+    "x": 915.42288557213919,
+    "y": 220.14925373134326,
+    "z": 11000,
+    "height": 258.70646766169153,
+    "width": 655.4726368159204,
+    "tabOrder": 8000
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_EntryType"
+                    }
+                  },
+                  "Property": "EntryTypeLabel"
+                }
+              },
+              "queryRef": "Dim_EntryType.EntryTypeLabel",
+              "nativeQueryRef": "EntryTypeLabel",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures_Table"
+                    }
+                  },
+                  "Property": "Quantity On Hand"
+                }
+              },
+              "queryRef": "Measures_Table.Quantity On Hand",
+              "nativeQueryRef": "Quantity On Hand"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Measures_Table"
+                  }
+                },
+                "Property": "Quantity On Hand"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "isHidden": true
+}
